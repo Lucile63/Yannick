@@ -1,0 +1,860 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TransLantau 104 — Préparation Yannick</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <style>
+    :root{
+      --bg:#0A0C0F;
+      --panel:#10141A;
+      --panel2:#151A21;
+      --line:#242B35;
+      --text:#F5F7FA;
+      --muted:#8A8F9A;
+      --orange:#E8622A;
+      --orange2:#FF742E;
+      --green:#1DB37A;
+      --blue:#2E8FE0;
+      --red:#E83A2A;
+      --light:#D6DAE2;
+      --radius:4px;
+      --shadow:0 0 0 1px rgba(232,98,42,.18),0 18px 42px rgba(0,0,0,.36);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(circle at 70% 0%,rgba(232,98,42,.12),transparent 30%),linear-gradient(180deg,#0A0C0F 0%,#07090B 100%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.4;min-height:100vh}
+    button,input,select,textarea{font:inherit}
+    button{cursor:pointer}
+    a{color:inherit}
+    .progress-rail{position:fixed;left:0;top:0;width:7px;height:100vh;background:#15191F;z-index:20;overflow:hidden}
+    .progress-fill{position:absolute;left:0;bottom:0;width:100%;height:0;background:linear-gradient(180deg,var(--orange2),var(--orange),var(--green));box-shadow:0 0 20px rgba(232,98,42,.8);transition:height .9s ease}
+    .site{width:min(1500px,calc(100% - 34px));margin:0 auto;padding:24px 0 48px}
+    .hero{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:18px;min-height:420px;padding:26px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(135deg,rgba(17,22,29,.92),rgba(10,12,15,.94)),radial-gradient(circle at 15% 20%,rgba(232,98,42,.18),transparent 28%);overflow:hidden;box-shadow:var(--shadow)}
+    .hero:after{content:"";position:absolute;inset:auto -10% -40% 25%;height:260px;background:linear-gradient(90deg,transparent,rgba(232,98,42,.13),transparent);transform:rotate(-8deg);pointer-events:none}
+    h1,h2,h3,.display{font-family:"Bebas Neue",Inter,sans-serif;letter-spacing:.03em;font-weight:400;text-transform:uppercase;margin:0}
+    h1{font-size:clamp(54px,9vw,132px);line-height:.82;max-width:900px}
+    h2{font-size:clamp(32px,5vw,58px);line-height:.95;margin-bottom:12px}
+    h3{font-size:28px;line-height:1}
+    .subtitle{font-size:18px;color:var(--muted);font-weight:700;margin:14px 0 26px;text-transform:uppercase;letter-spacing:.08em}
+    .mantra-hero{min-height:44px;font-family:"Bebas Neue";font-size:clamp(28px,4vw,52px);color:var(--orange);letter-spacing:.035em;transition:opacity .45s ease;max-width:900px}
+    .rule-key{margin-top:20px;border-left:4px solid var(--orange);padding:12px 14px;background:rgba(232,98,42,.08);font-weight:800;text-transform:uppercase;max-width:640px}
+    .count-box{align-self:stretch;display:flex;flex-direction:column;gap:14px;justify-content:space-between;z-index:1}
+    .count-main{background:rgba(0,0,0,.28);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+    .count-label{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;margin-bottom:8px}
+    .count-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+    .count-unit{border:1px solid #2a313b;background:#0D1117;padding:10px;border-radius:var(--radius);text-align:center;animation:countPulse 2.2s infinite alternate ease-in-out}
+    .count-value{font-family:"Bebas Neue";font-size:clamp(34px,5vw,64px);line-height:1;color:#fff}
+    .count-name{font-size:11px;color:var(--muted);text-transform:uppercase;font-weight:700}
+    .subcounts{display:grid;gap:8px}
+    .subcount{display:flex;justify-content:space-between;gap:12px;align-items:center;background:#0D1117;border:1px solid var(--line);border-radius:var(--radius);padding:10px 12px}
+    .subcount strong{font-size:13px;text-transform:uppercase}.subcount span{font-weight:800;color:var(--orange)}
+    @keyframes countPulse{from{box-shadow:0 0 0 rgba(232,98,42,0)}to{box-shadow:0 0 18px rgba(232,98,42,.16)}}
+    .topnav{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 20px;position:sticky;top:0;z-index:15;padding:10px 0;background:rgba(10,12,15,.84);backdrop-filter:blur(10px)}
+    .topnav a,.btn{border:1px solid var(--line);background:#10141A;color:var(--text);border-radius:var(--radius);padding:10px 12px;font-size:12px;text-transform:uppercase;letter-spacing:.07em;font-weight:800;text-decoration:none;transition:.18s ease}
+    .topnav a:hover,.btn:hover{border-color:var(--orange);color:#fff;background:#151A21}.btn.orange{background:var(--orange);border-color:var(--orange);color:#050505}.btn.danger{border-color:rgba(232,58,42,.5);color:#ffb2aa}.btn.ghost{background:transparent}
+    section{margin-top:22px;padding:20px;border:1px solid var(--line);background:rgba(16,20,26,.88);border-radius:var(--radius);box-shadow:0 18px 38px rgba(0,0,0,.18)}
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:16px}.section-head p{margin:0;color:var(--muted);font-size:13px;max-width:760px}.section-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.toggle-row{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px;text-transform:uppercase;font-weight:800}
+    .grid{display:grid;gap:12px}.kpi-grid{grid-template-columns:repeat(6,minmax(0,1fr))}.two{grid-template-columns:repeat(2,minmax(0,1fr))}.three{grid-template-columns:repeat(3,minmax(0,1fr))}.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .card{border:1px solid var(--line);background:linear-gradient(180deg,#121720,#0D1117);border-radius:var(--radius);padding:14px;min-width:0;transition:.18s ease}.card:hover{border-color:#343d49}.card.alert-red{border-color:rgba(232,58,42,.65);background:linear-gradient(180deg,rgba(232,58,42,.12),#0D1117)}.card.alert-orange{border-color:rgba(232,98,42,.65)}.card.alert-green{border-color:rgba(29,179,122,.45)}
+    .kpi-title{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;font-weight:800}.kpi-value{font-family:"Bebas Neue";font-size:clamp(30px,3.5vw,50px);line-height:1;color:#fff;margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.kpi-sub{font-size:12px;color:var(--muted);margin-top:6px}.small-value{font-size:28px}.badge{display:inline-flex;align-items:center;gap:6px;padding:5px 8px;border:1px solid var(--line);border-radius:var(--radius);font-size:11px;letter-spacing:.07em;text-transform:uppercase;font-weight:900;background:#0D1117;color:#fff}.badge.charge{border-color:rgba(232,98,42,.45);color:#ffa06e}.badge.spécifique,.badge.specifique{border-color:rgba(232,98,42,.7);color:#ff742e}.badge.récupération,.badge.recuperation{border-color:rgba(29,179,122,.55);color:#59e4ad}.badge.pic{border-color:rgba(46,143,224,.6);color:#8bc6ff}.badge.course-préparatoire,.badge.course-preparatoire{border-color:rgba(255,116,46,.9);color:#ff7b39}.badge.affûtage,.badge.affutage{border-color:rgba(214,218,226,.55);color:#e2e6ed}.badge.race{border-color:rgba(255,116,46,1);color:#fff;background:rgba(232,98,42,.18);animation:racePulse 1.8s infinite ease-in-out}
+    @keyframes racePulse{0%,100%{box-shadow:0 0 0 rgba(232,98,42,0)}50%{box-shadow:0 0 24px rgba(232,98,42,.45)}}
+    .bar{height:9px;background:#252C35;border-radius:var(--radius);overflow:hidden;margin-top:10px}.bar>span{display:block;height:100%;width:0;background:var(--orange);transition:width .8s ease}.bar.green>span{background:var(--green)}.bar.blue>span{background:var(--blue)}.bar.red>span{background:var(--red)}.bar.gray>span{background:var(--light)}
+    .split-panel{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(320px,.8fr);gap:12px}.chart-wrap{position:relative;min-height:360px}.chart-wrap.small{min-height:300px}canvas{width:100%!important;max-height:430px}.chart-form{display:none;border:1px solid rgba(232,98,42,.35);background:#0D1117;padding:12px;border-radius:var(--radius);margin-top:12px}.chart-form.active{display:block}
+    .timeline{display:flex;gap:12px;overflow-x:auto;padding:6px 2px 12px;scroll-snap-type:x proximity}.week-card{min-width:260px;scroll-snap-align:start;border:1px solid var(--line);background:#0D1117;border-radius:var(--radius);padding:14px;text-align:left;color:var(--text);transition:.18s ease}.week-card:hover,.week-card:focus{border-color:var(--orange);outline:none;transform:translateY(-2px)}.week-card.active{border:2px solid var(--orange);transform:scale(1.02);box-shadow:0 0 26px rgba(232,98,42,.22)}.week-card.race{animation:racePulse 1.8s infinite ease-in-out}.week-top{display:flex;align-items:start;justify-content:space-between;gap:8px}.week-id{font-family:"Bebas Neue";font-size:42px;color:#fff}.week-date{font-size:12px;color:var(--muted);font-weight:800;text-transform:uppercase}.week-objectif{font-weight:800;margin:12px 0 8px}.week-meta{font-size:12px;color:var(--muted);display:grid;gap:5px}.status{margin-top:10px;font-weight:900;font-size:12px;text-transform:uppercase;color:var(--muted)}
+    .drawer{position:fixed;right:0;top:0;height:100vh;width:min(560px,100%);background:#0D1117;border-left:1px solid var(--line);box-shadow:-18px 0 48px rgba(0,0,0,.55);z-index:40;padding:20px;overflow:auto;transform:translateX(105%);transition:transform .24s ease}.drawer.open{transform:translateX(0)}.drawer-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}.close{background:#151A21;border:1px solid var(--line);color:#fff;border-radius:var(--radius);padding:9px 11px}
+    .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.field{display:grid;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:900}.field input,.field select,.field textarea{width:100%;background:#090C10;border:1px solid #27303B;color:#fff;border-radius:var(--radius);padding:10px;min-height:41px}.field textarea{min-height:96px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid rgba(232,98,42,.5);border-color:var(--orange)}.range-line{display:flex;align-items:center;gap:10px}.range-line input{flex:1}.range-line span{font-weight:900;color:var(--orange);min-width:28px}.seance-list{margin:12px 0 0;padding-left:18px;color:#DDE2EA}.seance-list li{margin:7px 0}.coach-note{border-left:4px solid var(--orange);padding:10px 12px;background:rgba(232,98,42,.08);font-weight:800;color:#fff;margin:12px 0}
+    .phase-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.phase-title{font-family:"Bebas Neue";font-size:31px}.phase-weeks{color:var(--muted);font-size:12px;text-transform:uppercase;font-weight:800}.metric-line{display:flex;justify-content:space-between;gap:10px;margin:8px 0;color:#DDE2EA;font-size:13px}.metric-line strong{color:#fff}.radar-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,420px);gap:16px;align-items:start}.slider-list{display:grid;gap:12px}.slider-row{display:grid;gap:6px}.slider-row label{display:flex;justify-content:space-between;font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:900}.slider-row input{width:100%;accent-color:var(--orange)}
+    .journal-layout{display:grid;grid-template-columns:minmax(280px,420px) minmax(0,1fr);gap:14px}.journal-list{display:grid;gap:10px;max-height:560px;overflow:auto;padding-right:4px}.journal-item{border:1px solid var(--line);background:#0D1117;padding:12px;border-radius:var(--radius)}.journal-head{display:flex;justify-content:space-between;gap:10px}.journal-head strong{font-family:"Bebas Neue";font-size:26px}.journal-meta{color:var(--muted);font-size:12px}.journal-note{margin-top:8px;color:#DCE1EA}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.filters input,.filters select{background:#090C10;border:1px solid #27303B;color:#fff;border-radius:var(--radius);padding:9px}.month-summary{margin-top:12px;color:#DCE1EA;font-size:13px;display:grid;gap:6px}
+    details{border:1px solid var(--line);background:#0D1117;border-radius:var(--radius);padding:12px}summary{font-weight:900;text-transform:uppercase;letter-spacing:.06em;cursor:pointer}.rules-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}.rules-grid ol,.rules-grid ul{margin:10px 0 0;padding-left:20px}.rules-grid li{margin:7px 0}.adjust-table{width:100%;border-collapse:collapse;margin-top:12px;font-size:13px}.adjust-table th,.adjust-table td{border:1px solid var(--line);padding:9px;text-align:left}.adjust-table th{color:#fff;background:#121820;text-transform:uppercase;font-size:11px;letter-spacing:.08em}.adjust-table td:first-child{font-weight:800;color:#fff}
+    .quote-carousel{position:relative;overflow:hidden;border:1px solid var(--line);background:#0D1117;border-radius:var(--radius);min-height:170px}.quote-track{display:flex;transition:transform .45s ease}.quote-slide{min-width:100%;padding:28px}.quote-slide div{font-family:"Bebas Neue";font-size:clamp(38px,7vw,94px);line-height:.9;color:#fff}.quote-nav{display:flex;gap:8px;margin-top:10px}.footer{margin-top:24px;border-top:1px solid var(--line);padding:22px 0 8px;color:var(--muted)}.footer-title{font-family:"Bebas Neue";font-size:56px;color:#fff}.profile-svg{width:100%;height:120px;margin:8px 0 12px;border:1px solid var(--line);background:#0D1117;border-radius:var(--radius)}.profile-path{fill:none;stroke:var(--orange);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:700;stroke-dashoffset:700;animation:drawProfile 4s ease forwards infinite alternate}.profile-fill{fill:rgba(232,98,42,.10)}@keyframes drawProfile{to{stroke-dashoffset:0}}
+    .note{font-size:12px;color:var(--muted)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.hide{display:none!important}.color-green{color:var(--green)}.color-orange{color:var(--orange)}.color-red{color:var(--red)}.color-blue{color:var(--blue)}
+    @media (max-width:1100px){.hero,.split-panel,.radar-layout,.journal-layout{grid-template-columns:1fr}.kpi-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.phase-grid,.rules-grid{grid-template-columns:1fr 1fr}.count-box{align-self:auto}}
+    @media (max-width:720px){.site{width:min(100% - 20px,1500px);padding-top:12px}.hero{padding:16px}.count-grid{grid-template-columns:repeat(2,1fr)}.kpi-grid,.two,.three,.four,.phase-grid,.rules-grid{grid-template-columns:1fr}.section-head{display:block}.section-actions{margin-top:10px}.form-grid{grid-template-columns:1fr}.drawer{padding:14px}.topnav{position:static}.week-card{min-width:230px}.footer-title{font-size:40px}}
+  </style>
+</head>
+<body>
+  <div class="progress-rail" aria-hidden="true"><div class="progress-fill" id="verticalProgress"></div></div>
+  <main class="site">
+    <header class="hero" id="top">
+      <div>
+        <div class="badge race">Race target · 13.11.2026</div>
+        <h1>TransLantau 104 — Préparation Yannick</h1>
+        <p class="subtitle">104 km · 4500 D+ · Hong Kong · 13.11.2026</p>
+        <div class="mantra-hero" id="heroMantra" aria-live="polite">Les jambes souffrent, la tête décide.</div>
+        <div class="rule-key">78 km avec 4300 D+ bien absorbés valent mieux que 85 km roulants.</div>
+      </div>
+      <aside class="count-box" aria-label="Compte à rebours courses">
+        <div class="count-main">
+          <div class="count-label">TransLantau — départ</div>
+          <div class="count-grid" id="mainCountdown"></div>
+        </div>
+        <div class="subcounts" id="subCountdowns"></div>
+      </aside>
+    </header>
+
+    <nav class="topnav" aria-label="Navigation page">
+      <a href="#dashboard">Dashboard</a>
+      <a href="#volume">Volume</a>
+      <a href="#atlctl">ATL/CTL</a>
+      <a href="#timeline">Semaines</a>
+      <a href="#phases">Blocs</a>
+      <a href="#radar">Radar</a>
+      <a href="#journal">Journal</a>
+      <a href="#rules">Règles</a>
+    </nav>
+
+    <section id="dashboard">
+      <div class="section-head">
+        <div>
+          <h2>Tableau de bord — KPI temps réel</h2>
+          <p>Calculs dérivés de PLAN et des saisies localStorage. Le cardio n’est pas le facteur limitant. La durabilité musculaire décide.</p>
+        </div>
+        <div class="section-actions">
+          <label class="toggle-row"><input type="checkbox" id="includeRaceToggle"> Inclure S21 course dans les réalisés</label>
+          <select id="nutritionSelect" aria-label="Statut nutrition"></select>
+        </div>
+      </div>
+      <div class="grid kpi-grid" id="kpiGrid"></div>
+      <div class="grid three" style="margin-top:12px" id="progressCards"></div>
+      <div class="grid two" style="margin-top:12px">
+        <div class="card" id="currentWeekCard"></div>
+        <div class="card" id="projectionCard"></div>
+      </div>
+      <div class="grid" style="margin-top:12px" id="alertsBox"></div>
+    </section>
+
+    <section id="volume">
+      <div class="section-head">
+        <div>
+          <h2>Graphique volume — 21 semaines</h2>
+          <p>Ligne pointillée : cible calculée par moyenne km. Ligne pleine : réel saisi. Le D+ peut être affiché sur axe secondaire.</p>
+        </div>
+        <label class="toggle-row"><input type="checkbox" id="showDpToggle" checked> Afficher D+</label>
+      </div>
+      <div class="chart-wrap"><canvas id="volumeChart" aria-label="Graphique volume et D+" role="img"></canvas></div>
+      <div class="chart-form" id="inlineWeekForm" aria-live="polite"></div>
+    </section>
+
+    <section id="atlctl">
+      <div class="section-head">
+        <div>
+          <h2>ATL / CTL</h2>
+          <p>Le ratio ATL/CTL sert à détecter surcharge ou désentraînement. Il ne remplace pas la fraîcheur musculaire.</p>
+        </div>
+      </div>
+      <div class="chart-wrap small"><canvas id="atlChart" aria-label="Graphique ratio ATL CTL" role="img"></canvas></div>
+    </section>
+
+    <section id="timeline">
+      <div class="section-head">
+        <div>
+          <h2>Planning semaines</h2>
+          <p>21 cartes S1 à S21. Cliquer sur une semaine pour saisir réalisé, fraîcheur, mollet/Achille, crampes et notes.</p>
+        </div>
+      </div>
+      <div class="timeline" id="timelineCards"></div>
+    </section>
+
+    <section id="phases">
+      <div class="section-head">
+        <div>
+          <h2>Bilan par bloc</h2>
+          <p>Chaque bloc compare le prévu et le réalisé. Les phases terminées affichent les écarts.</p>
+        </div>
+      </div>
+      <div class="grid phase-grid" id="phaseCards"></div>
+    </section>
+
+    <section id="radar">
+      <div class="section-head">
+        <div>
+          <h2>Radar qualités</h2>
+          <p>Évaluation 1–10. Courbe principale : actuelle. Courbe fantôme : précédente sauvegarde.</p>
+        </div>
+      </div>
+      <div class="radar-layout">
+        <div class="chart-wrap small"><canvas id="radarChart" aria-label="Radar qualités trail" role="img"></canvas></div>
+        <div>
+          <div class="slider-list" id="radarSliders"></div>
+          <button class="btn orange" id="saveRadar" style="margin-top:12px">Sauvegarder radar</button>
+          <p class="note" id="radarDate"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="journal">
+      <div class="section-head">
+        <div>
+          <h2>Journal de bord</h2>
+          <p>Saisie terrain. Sans données, le pilotage est aveugle.</p>
+        </div>
+      </div>
+      <div class="journal-layout">
+        <form class="card" id="journalForm">
+          <div class="form-grid">
+            <div class="field"><label for="jDate">Date</label><input id="jDate" type="date" required></div>
+            <div class="field"><label for="jType">Type</label><select id="jType"></select></div>
+            <div class="field"><label for="jFeel">Ressenti</label><select id="jFeel"><option>😴</option><option>😐</option><option selected>💪</option><option>🔥</option></select></div>
+            <div class="field"><label for="jRpe">RPE</label><input id="jRpe" type="number" min="0" max="10" step="1" value="3"></div>
+            <div class="field"><label for="jKm">Km</label><input id="jKm" type="number" min="0" step="0.1" value="0"></div>
+            <div class="field"><label for="jDp">D+</label><input id="jDp" type="number" min="0" step="1" value="0"></div>
+            <div class="field"><label for="jDuration">Durée</label><input id="jDuration" type="text" placeholder="1h15 / 75 min"></div>
+            <div class="field"><label for="jAchilles">Mollet/Achille</label><select id="jAchilles"><option value="non">Non</option><option value="oui">Oui</option></select></div>
+            <div class="field"><label for="jCramps">Crampes</label><select id="jCramps"><option value="non">Non</option><option value="oui">Oui</option></select></div>
+            <div class="field full"><label for="jNotes">Notes</label><textarea id="jNotes" placeholder="Terrain, nutrition, sommeil, jambes en descente..."></textarea></div>
+          </div>
+          <button class="btn orange" type="submit" style="margin-top:12px">Ajouter entrée</button>
+        </form>
+        <div>
+          <div class="filters">
+            <select id="journalFilter" aria-label="Filtrer journal par type"><option value="all">Tous types</option></select>
+            <input id="journalSearch" type="search" placeholder="Recherche notes" aria-label="Recherche journal">
+          </div>
+          <div class="journal-list" id="journalList"></div>
+          <div class="month-summary card" id="monthSummary"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rules">
+      <div class="section-head">
+        <div>
+          <h2>Principes & règles d’ajustement</h2>
+          <p>Pas de conciliation molle. Si un signal rouge apparaît, la charge baisse. Le plan doit être absorbé.</p>
+        </div>
+      </div>
+      <details open>
+        <summary>Priorités, règles fixes, nutrition et signaux</summary>
+        <div class="rules-grid">
+          <div class="card">
+            <h3>Ordre de priorité</h3>
+            <ol>
+              <li>D+ spécifique</li><li>Descente / quadriceps</li><li>Sortie longue</li><li>Nutrition</li><li>Fraîcheur</li><li>Kilométrage</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h3>Règles fixes</h3>
+            <ul>
+              <li>Jamais deux séances dures cardio consécutives.</li><li>Après sortie longue &gt;3h30 : lendemain très facile ou repos.</li><li>Renfo mollets/soléaires deux fois par semaine jusqu’à octobre.</li><li>Descente travaillée en fatigue.</li><li>Toutes les 3 à 4 semaines : semaine allégée.</li><li>Les préparatoires ne cassent pas le bloc TransLantau.</li><li>La 6000D calibre chrono cible et ajustements finaux.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Nutrition ultra</h3>
+            <ul>
+              <li>70 à 90 g glucides/heure à tester progressivement.</li><li>Prise toutes les 20 minutes.</li><li>500 à 750 ml/h selon chaleur et tolérance.</li><li>Sodium à adapter à la sudation et à l’humidité.</li><li>Rien de nouveau le jour de la TransLantau.</li>
+            </ul>
+          </div>
+        </div>
+        <table class="adjust-table">
+          <thead><tr><th>Signal</th><th>Décision</th></tr></thead>
+          <tbody>
+            <tr><td>Douleur tendon d’Achille</td><td>Supprimer intensité 3 à 5 jours.</td></tr>
+            <tr><td>Raideur mollet &gt;48h</td><td>Pas de charge lourde mollet, endurance facile ou vélo.</td></tr>
+            <tr><td>Crampes sur séance courte</td><td>Réduire intensité, vérifier fatigue et hydratation.</td></tr>
+            <tr><td>Quadriceps détruits &gt;72h</td><td>Baisser D+ de 30 à 40 %.</td></tr>
+            <tr><td>FC anormalement haute à allure facile</td><td>Remplacer qualité par footing facile.</td></tr>
+            <tr><td>Jambes lourdes en descente deux séances consécutives</td><td>Supprimer descentes agressives.</td></tr>
+            <tr><td>Sommeil dégradé &gt;3 jours</td><td>Réduire charge.</td></tr>
+            <tr><td>Fraîcheur ≤3/10</td><td>Pas de séance dure.</td></tr>
+          </tbody>
+        </table>
+      </details>
+    </section>
+
+    <section id="quotes">
+      <div class="section-head">
+        <div><h2>Mantras / citations</h2><p>Rotation automatique toutes les 5 secondes. Navigation manuelle.</p></div>
+      </div>
+      <div class="quote-carousel" aria-live="polite"><div class="quote-track" id="quoteTrack"></div></div>
+      <div class="quote-nav"><button class="btn" id="prevQuote">Précédent</button><button class="btn" id="nextQuote">Suivant</button></div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-title">HK · 13.11.2026 · 104 KM · 4500 D+</div>
+      <svg class="profile-svg" viewBox="0 0 1000 160" role="img" aria-label="Profil de course abstrait non exact">
+        <path class="profile-fill" d="M0 140 L80 116 L130 128 L180 78 L235 114 L300 56 L355 98 L420 46 L500 110 L570 68 L620 96 L690 28 L750 88 L825 44 L900 112 L1000 74 L1000 160 L0 160 Z"></path>
+        <path class="profile-path" d="M0 140 L80 116 L130 128 L180 78 L235 114 L300 56 L355 98 L420 46 L500 110 L570 68 L620 96 L690 28 L750 88 L825 44 L900 112 L1000 74"></path>
+      </svg>
+      <div class="grid four" id="footerStats"></div>
+      <p class="note">Profil SVG abstrait. Il ne représente pas le parcours réel sans GPX.</p>
+    </footer>
+  </main>
+
+  <aside class="drawer" id="weekDrawer" aria-label="Détail semaine" aria-hidden="true"></aside>
+
+  <script>
+  "use strict";
+
+  const LS = {
+    week: "tl104_week_data",
+    radar: "tl104_radar",
+    journal: "tl104_journal",
+    fraicheur: "tl104_fraicheur",
+    nutrition: "tl104_nutrition_status",
+    ui: "tl104_ui_settings"
+  };
+
+  const RACE_MAIN = { name:"TransLantau", date:"2026-11-13T00:00:00+08:00", dateKey:"2026-11-13", km:104, dp:4500, location:"Hong Kong" };
+  const PREP_RACES = [
+    { name:"6000D", date:"2026-08-01T00:00:00+02:00", week:"S6", km:42, dp:2100, role:"Course test spécifique principale" },
+    { name:"Luzi’trail", date:"2026-09-06T00:00:00+02:00", week:"S11", km:16, dp:410, role:"Rappel intensité" },
+    { name:"Trail des Dolmens", date:"2026-09-13T00:00:00+02:00", week:"S12", km:15, dp:370, role:"Rappel intensité" }
+  ];
+
+  const PHASES = [
+    { id:0, label:"Phase 0 — Mise en route structurée", start:1, end:4 },
+    { id:1, label:"Phase 1 — Bloc 6000D", start:5, end:7 },
+    { id:2, label:"Phase 2 — Spécifique ultra août", start:8, end:10 },
+    { id:3, label:"Phase 3 — Courses courtes septembre", start:11, end:13 },
+    { id:4, label:"Phase 4 — Bloc TransLantau", start:14, end:17 },
+    { id:5, label:"Phase 5 — Affûtage + course", start:18, end:21 }
+  ];
+
+  const WEEK_START_DATES = [
+    "2026-06-22","2026-06-29","2026-07-06","2026-07-13","2026-07-20","2026-07-27","2026-08-03","2026-08-10","2026-08-17","2026-08-24","2026-08-31","2026-09-07","2026-09-14","2026-09-21","2026-09-28","2026-10-05","2026-10-12","2026-10-19","2026-10-26","2026-11-02","2026-11-09"
+  ];
+
+  const PLAN = [
+    {id:1,label:"S1 — Reprise structurée + côtes",start:"2026-06-22",end:"2026-06-28",phase:0,type:"charge",kmMin:58,kmMax:58,dpMin:1200,dpMax:1200,objectif:"Relancer sans surcharge.",seances:["Séance côtes : 20 min échauffement + 10 × 1 min côte RPE 7 / récup descente + retour au calme.","Footing : 1h en endurance facile.","Renfo + footing : 35–45 min facile + mollets/soléaires.","Sortie longue : 2h30 vallonné, 600–700 D+, RPE 3–4.","Sortie fatigue : 1h15 facile avec 6 lignes droites de 15 sec."],prioriteCoach:"Relancer propre. Le D+ doit être absorbé, pas subi."},
+    {id:2,label:"S2 — Force montée + endurance",start:"2026-06-29",end:"2026-07-05",phase:0,type:"charge",kmMin:62,kmMax:62,dpMin:1500,dpMax:1500,objectif:"Force montée + endurance.",seances:["Côtes longues : 5 × 5 min montée RPE 6 / récup descente.","Footing facile 1h.","Home trainer ou footing 45 min facile + renfo.","Sortie longue : 3h, 800–900 D+.","Rando-course : 1h30, marche active en montée avec bâtons."],prioriteCoach:"Construire la montée. Pas d’ego sur les allures."},
+    {id:3,label:"S3 — Premier bloc D+",start:"2026-07-06",end:"2026-07-12",phase:0,type:"charge",kmMin:66,kmMax:66,dpMin:1800,dpMax:1800,objectif:"Premier bloc D+.",seances:["Côtes mixtes : 6 × 3 min RPE 7 + 6 × 30 sec dynamique.","Footing 1h10 facile.","Renfo + footing 45 min.","Sortie longue : 3h15–3h30, 1000 D+, finir par 20 min descente contrôlée.","Sortie fatigue : 1h30 facile."],prioriteCoach:"Descente contrôlée en fin de long. Pas de freinage destructeur."},
+    {id:4,label:"S4 — Assimilation",start:"2026-07-13",end:"2026-07-19",phase:0,type:"récupération",kmMin:50,kmMax:50,dpMin:900,dpMax:900,objectif:"Absorber.",seances:["Une seule séance qualité : 8 × 1 min côte.","Sortie longue limitée à 2h15.","Renfo maintenu, mais charges réduites de 30 %.","Aucun effort au seuil prolongé."],prioriteCoach:"Semaine allégée. Trop charger ici est une erreur."},
+    {id:5,label:"S5 — Spécifique 6000D",start:"2026-07-20",end:"2026-07-26",phase:1,type:"spécifique",kmMin:68,kmMax:68,dpMin:2100,dpMax:2100,objectif:"Préparer le choc musculaire de la 6000D.",seances:["Côtes longues : 4 × 8 min montée RPE 6, bâtons si possible.","Footing 1h facile.","Renfo jambes : mollets + soléaires + quadriceps excentrique.","Sortie longue : 3h45 à 4h, 1200–1400 D+, allure très maîtrisée.","Sortie fatigue : 1h15 facile, terrain souple."],prioriteCoach:"Le choc musculaire se prépare avant la course."},
+    {id:6,label:"S6 — 6000D",start:"2026-07-27",end:"2026-08-02",phase:1,type:"course préparatoire",kmMin:65,kmMax:75,dpMin:2500,dpMax:3000,objectif:"Course test, pas objectif maximal.",course:{name:"6000D",date:"2026-08-01",km:42,dp:2100,role:"Test spécifique principal"},seances:["J-5 ou J-4 : 45 min facile + 6 × 20 sec.","J-3 : repos ou 30 min très facile.","J-2 : repos.","J-1 : 20–25 min footing + mobilité.","Course 6000D : départ contrôlé, RPE 4–5 maximum sur les premières longues montées.","Ne pas courir les pentes trop raides si marche active plus rentable.","Descente propre, relâchée, pas agressive au début.","Après course : 2 jours off ou marche. Pas de séance dure pendant 7 jours."],prioriteCoach:"Finir avec de la tenue musculaire. Pas de démonstration inutile."},
+    {id:7,label:"S7 — Récupération réelle",start:"2026-08-03",end:"2026-08-09",phase:1,type:"récupération",kmMin:35,kmMax:45,dpMin:500,dpMax:800,objectif:"Récupération réelle.",seances:["2 footings très faciles de 40–50 min.","1 vélo facile 45–60 min.","1 sortie vallonnée 1h30 si jambes OK.","Renfo léger : gainage, mobilité, mollets sans charge lourde.","Critère pour reprendre : jambes normales en descente. Si quadriceps ou mollets encore lourds, réduire."],prioriteCoach:"Récupérer est une séance. Forcer ici décale tout."},
+    {id:8,label:"S8 — Rebuild propre",start:"2026-08-10",end:"2026-08-16",phase:2,type:"charge",kmMin:65,kmMax:65,dpMin:1700,dpMax:1700,objectif:"Rebuild propre.",seances:["Côtes : 6 × 4 min RPE 6–7.","Footing 1h facile.","Renfo complet.","Sortie longue : 3h15, 1000 D+.","Sortie fatigue : 1h30 rando-course."],prioriteCoach:"Repartir propre. Aucune dette de la 6000D."},
+    {id:9,label:"S9 — Bloc endurance musculaire",start:"2026-08-17",end:"2026-08-23",phase:2,type:"spécifique",kmMin:72,kmMax:72,dpMin:2200,dpMax:2200,objectif:"Bloc endurance musculaire.",seances:["Bloc sur 2 jours successifs — Jour A : 1h30 avec 8 × 2 min côte RPE 7.","Jour B : sortie longue 4h, 1300–1500 D+, RPE 3–4.","Footing 1h facile.","Footing 45 min + renfo.","Sortie récupération 1h."],prioriteCoach:"Le bloc successif construit la durabilité. RPE contrôlé obligatoire."},
+    {id:10,label:"S10 — Bloc spécifique ultra",start:"2026-08-24",end:"2026-08-30",phase:2,type:"spécifique",kmMin:76,kmMax:76,dpMin:2500,dpMax:2500,objectif:"Simuler fatigue TransLantau.",seances:["Bloc 3 jours — Jour 1 : 1h15 avec 5 × 6 min montée RPE 6.","Jour 2 : 3h30–4h vallonné, 1400 D+, bâtons.","Jour 3 : 1h45 très facile avec marche active en montée.","Si les mollets tirent, enlever le jour 3."],prioriteCoach:"Si mollets tirent, tu coupes le jour 3. Pas de négociation."},
+    {id:11,label:"S11 — Luzi’trail",start:"2026-08-31",end:"2026-09-06",phase:3,type:"course préparatoire",kmMin:58,kmMax:65,dpMin:1300,dpMax:1600,objectif:"Luzi’trail 16 km — séance qualitative.",course:{name:"Luzi’trail",date:"2026-09-06",km:16,dp:410,role:"Rappel intensité"},seances:["Début semaine : 1h facile.","Séance rappel : 6 × 1 min vite / 1 min lent.","Course : possibilité de courir fort, mais pas à bloc si fatigue.","Le lendemain : 45 min très facile ou repos.","Renfo léger uniquement."],prioriteCoach:"Course courte secondaire. Elle ne doit pas casser septembre."},
+    {id:12,label:"S12 — Trail des Dolmens",start:"2026-09-07",end:"2026-09-13",phase:3,type:"course préparatoire",kmMin:55,kmMax:62,dpMin:1200,dpMax:1500,objectif:"Trail des Dolmens 15 km — attention à la casse.",course:{name:"Trail des Dolmens",date:"2026-09-13",km:15,dp:370,role:"Rappel intensité"},seances:["1 footing facile.","1 séance courte : 4 × 3 min RPE 6.","Course : allure soutenue contrôlée.","Pas de duel inutile en descente.","Sortie complémentaire : 1h30 facile si récupération bonne."],prioriteCoach:"Deuxième course courte. Contrôle obligatoire si fatigue."},
+    {id:13,label:"S13 — Assimilation post-courses",start:"2026-09-14",end:"2026-09-20",phase:3,type:"récupération",kmMin:55,kmMax:55,dpMin:1000,dpMax:1000,objectif:"Remettre de la fraîcheur avant le gros bloc final.",seances:["3 footings faciles.","1 sortie vallonnée 2h15.","1 renfo complet.","Aucun gros effort."],prioriteCoach:"Rendre le corps disponible pour le bloc TransLantau."},
+    {id:14,label:"S14 — Spécifique TransLantau",start:"2026-09-21",end:"2026-09-27",phase:4,type:"spécifique",kmMin:78,kmMax:78,dpMin:2600,dpMax:2600,objectif:"Apprendre à repartir sur jambes déjà entamées.",seances:["Côtes longues : 3 × 12 min montée RPE 6, récup descente.","Footing 1h facile.","Renfo jambes complet.","Sortie longue : 4h, 1500 D+, bâtons.","Sortie fatigue : 2h facile, 500–700 D+."],prioriteCoach:"Réapprendre à repartir fatigué. C’est le cœur du plan."},
+    {id:15,label:"S15 — Bloc lourd",start:"2026-09-28",end:"2026-10-04",phase:4,type:"charge",kmMin:84,kmMax:84,dpMin:3000,dpMax:3000,objectif:"Bloc lourd. La charge vient du D+.",seances:["Bloc 3 jours — Jour 1 : 1h30 vallonné avec 8 × 3 min montée active.","Jour 2 : 4h à 4h30, 1600–1800 D+.","Jour 3 : 2h rando-course, 600–800 D+.","Footing facile 1h.","Footing 45 min + mobilité.","Pas de séance rapide cette semaine."],prioriteCoach:"Pas de rapide. Du D+, du contrôle, de l’absorption."},
+    {id:16,label:"S16 — Pic spécifique",start:"2026-10-05",end:"2026-10-11",phase:4,type:"pic",kmMin:88,kmMax:92,dpMin:3300,dpMax:3600,objectif:"Valider la capacité à courir/marcher efficacement sur fatigue profonde.",seances:["Séance 1 : 1h20 avec 5 × 8 min montée RPE 6.","Séance 2 : footing 1h facile.","Séance 3 : renfo léger + footing 45 min.","Séance 4 : sortie longue 5h, 1800–2200 D+, bâtons.","Séance 5 : lendemain 2h à 2h30 facile, 700–900 D+.","Si fatigue anormale : réduire à 80 km / 2800 D+."],prioriteCoach:"Semaine clé. Pas à l’ego. Une semaine pic réussie est une semaine absorbée."},
+    {id:17,label:"S17 — Dernier gros bloc",start:"2026-10-12",end:"2026-10-18",phase:4,type:"spécifique",kmMin:76,kmMax:82,dpMin:3000,dpMax:3000,objectif:"Moins de kilomètres, encore du D+.",seances:["Côtes : 10 × 2 min RPE 7.","Footing 1h facile.","Sortie longue : 4h, 1500–1700 D+.","Sortie fatigue : 2h, 600–800 D+.","Renfo léger.","Après cette semaine, ne plus chercher à progresser. Chercher à assimiler."],prioriteCoach:"Dernier gros bloc. Après ça, on assimile."},
+    {id:18,label:"S18 — Début affûtage",start:"2026-10-19",end:"2026-10-25",phase:5,type:"affûtage",kmMin:62,kmMax:62,dpMin:1800,dpMax:1800,objectif:"Début affûtage.",seances:["Une séance rappel : 5 × 4 min montée RPE 6.","Sortie longue : 3h, 900–1100 D+.","Deux footings faciles.","Renfo réduit : 1 séance légère."],prioriteCoach:"Tu ne construis plus. Tu conserves et tu récupères."},
+    {id:19,label:"S19 — Fraîcheur + rappel intensité",start:"2026-10-26",end:"2026-11-01",phase:5,type:"affûtage",kmMin:50,kmMax:50,dpMin:1200,dpMax:1200,objectif:"Fraîcheur + rappel intensité.",seances:["1h facile avec 6 × 20 sec.","4 × 3 min montée RPE 6.","Sortie longue : 2h15, 600 D+.","Footing récupération.","Plus de charge lourde mollets."],prioriteCoach:"La fraîcheur devient prioritaire. Pas de charge lourde mollets."},
+    {id:20,label:"S20 — Affûtage",start:"2026-11-02",end:"2026-11-08",phase:5,type:"affûtage",kmMin:35,kmMax:42,dpMin:600,dpMax:900,objectif:"Affûtage.",seances:["45 min facile.","6 × 1 min dynamique en côte, récup complète.","1h15 vallonné facile.","35–40 min footing.","Mobilité, sommeil, matériel."],prioriteCoach:"Le travail est fait. Le risque maintenant, c’est d’en rajouter."},
+    {id:21,label:"S21 — TransLantau",start:"2026-11-09",end:"2026-11-13",phase:5,type:"race",kmMin:15,kmMax:25,dpMin:0,dpMax:0,dpLabel:"D+ faible non chiffré hors course",objectif:"Semaine course. Course principale le vendredi 13 novembre.",course:{name:"TransLantau",date:"2026-11-13",km:104,dp:4500,role:"Objectif principal"},seances:["Lundi : 40 min facile + 5 × 20 sec.","Mardi : repos ou 30 min très facile.","Mercredi : 25–30 min footing + mobilité.","Jeudi : repos.","Vendredi : course.","Aucune séance de renfo cette semaine."],prioriteCoach:"Arriver frais. Aucun geste inutile. La course est séparée du volume d’affûtage."}
+  ];
+
+  const HERO_MANTRAS = ["Les jambes souffrent, la tête décide.","Chaque descente s'apprend.","Ce que tu endures aujourd'hui, tu le déposeras en haut.","La performance se construit dans l'obscurité.","Pas de course maîtrisée sans mauvaises journées.","Les mollets se préparent avant de se plaindre.","HK t'attend. Arrive solide.","Le trail ne ment pas."];
+  const QUOTES = ["Les jambes souffrent, la tête décide.","Chaque descente s'apprend.","Ce que tu endures aujourd'hui, tu le déposeras en haut.","La performance se construit dans l'obscurité.","Pas de course maîtrisée sans mauvaises journées.","Les mollets se préparent avant de se plaindre.","HK t'attend. Arrive solide.","Le trail ne ment pas.","La montagne ne se négocie pas.","Chaque mètre de D+ est un investissement.","Après 70 km, le mental ne compense pas une mauvaise préparation musculaire.","Frais au départ, solide après la nuit."];
+  const JOURNAL_TYPES = ["EF","Trail","Côtes","Descentes","Tempo","PPG / renfo","Home trainer","Rando-course","Repos","Course","Autre"];
+  const RADAR_AXES = ["Endurance longue","Montée / marche active","Descentes / quadriceps","Mollets / soléaires","Nutrition / hydratation","Fraîcheur mentale"];
+
+  const $ = sel => document.querySelector(sel);
+  const $$ = sel => Array.from(document.querySelectorAll(sel));
+  const safeParse = (key, fallback) => { try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch(e) { return fallback; } };
+  const save = (key, value) => localStorage.setItem(key, JSON.stringify(value));
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+  const num = v => Math.max(0, Number(v) || 0);
+  const mean = (a,b) => (a+b)/2;
+  const fmt = n => Number.isFinite(n) ? Math.round(n).toLocaleString("fr-FR") : "—";
+  const fmt1 = n => Number.isFinite(n) ? (Math.round(n*10)/10).toLocaleString("fr-FR") : "—";
+  const dateLocal = s => new Date(s + "T12:00:00");
+  const daysBetween = (a,b) => Math.ceil((dateLocal(b) - a) / 86400000);
+  const typeClass = t => t.normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g,"-").toLowerCase();
+  const phaseOf = w => PHASES.find(p => w.id >= p.start && w.id <= p.end);
+  const targetKm = w => mean(w.kmMin,w.kmMax);
+  const targetDp = w => mean(w.dpMin,w.dpMax);
+  const totalPlanKm = () => PLAN.reduce((s,w)=>s+targetKm(w),0);
+  const totalPlanDp = () => PLAN.reduce((s,w)=>s+targetDp(w),0);
+  const totalSessions = () => PLAN.reduce((s,w)=>s+(w.seances?.length || 0),0);
+
+  let weekData = safeParse(LS.week, {});
+  let journal = safeParse(LS.journal, []);
+  let radarStore = safeParse(LS.radar, {current:Object.fromEntries(RADAR_AXES.map(a=>[a,5])), previous:null, date:null});
+  let uiSettings = safeParse(LS.ui, {includeRace:false, showDp:true});
+  let nutritionStatus = localStorage.getItem(LS.nutrition) || "auto";
+  let selectedWeekId = null;
+  let volumeChart, atlChart, radarChart;
+
+  function today(){ return new Date(); }
+
+  function getActiveWeek(now = today()){
+    let active = PLAN[0];
+    for (const w of PLAN){ if (dateLocal(w.start) <= now) active = w; }
+    if (now < dateLocal(PLAN[0].start)) return PLAN[0];
+    return active;
+  }
+
+  function statusOfWeek(w, now = today()){
+    const start = dateLocal(w.start);
+    const end = new Date(dateLocal(w.end).getTime() + 86400000);
+    if (end < now) return "✓ Réalisée";
+    if (start <= now && now <= end) return "→ En cours";
+    return "○ À venir";
+  }
+
+  function nutritionAuto(active){
+    if (active.id < 6) return "À cadrer";
+    if (active.id <= 10) return "À tester en course / sortie longue";
+    if (active.id <= 17) return "En validation";
+    return "Validée ?";
+  }
+
+  function getWeekActuals(w){
+    const d = weekData[w.id] || {};
+    return {km:num(d.km), dp:num(d.dp), sessions:num(d.sessions), freshness: d.freshness ? num(d.freshness) : null, notes:d.notes || "", achilles:d.achilles || "non", cramps:d.cramps || "non"};
+  }
+
+  function getEnteredWeeks(){
+    return PLAN.filter(w => weekData[w.id] && (weekData[w.id].km !== undefined || weekData[w.id].dp !== undefined || weekData[w.id].sessions !== undefined));
+  }
+
+  function actualTotals(){
+    const includeRace = uiSettings.includeRace;
+    return PLAN.reduce((acc,w)=>{
+      if (w.id === 21 && !includeRace) return acc;
+      const a = getWeekActuals(w);
+      acc.km += a.km; acc.dp += a.dp; acc.sessions += a.sessions;
+      return acc;
+    },{km:0,dp:0,sessions:0});
+  }
+
+  function activeWeekCount(now = today()){
+    return PLAN.filter(w => new Date(dateLocal(w.end).getTime()+86400000) < now).length;
+  }
+
+  function remainingWeeks(now = today()){
+    const active = getActiveWeek(now);
+    return Math.max(0, 21 - active.id + 1);
+  }
+
+  function diffClass(ratio){
+    const delta = ratio - 1;
+    if (Math.abs(delta) <= .10) return "green";
+    if (Math.abs(delta) <= .20) return "orange";
+    return "red";
+  }
+
+  function freshnessClass(f){
+    if (!f) return "";
+    if (f >= 7) return "green";
+    if (f >= 4) return "orange";
+    return "red";
+  }
+
+  function atlCtlForWeek(index){
+    const weeksUpTo = PLAN.slice(0,index+1).filter(w => weekData[w.id] && weekData[w.id].km !== undefined);
+    const current = PLAN[index];
+    const currentKm = weekData[current.id]?.km;
+    if (currentKm === undefined) return null;
+    const last4 = weeksUpTo.slice(-4).map(w => num(weekData[w.id].km));
+    if (!last4.length) return null;
+    const ctl = last4.reduce((a,b)=>a+b,0)/last4.length;
+    if (!ctl) return null;
+    return {atl:num(currentKm), ctl, ratio:num(currentKm)/ctl};
+  }
+
+  function latestEntryDate(){
+    const dates = [];
+    Object.values(weekData).forEach(d => { if (d.updatedAt) dates.push(new Date(d.updatedAt)); });
+    journal.forEach(j => { if (j.date) dates.push(dateLocal(j.date)); });
+    if (!dates.length) return null;
+    return new Date(Math.max(...dates.map(d=>d.getTime())));
+  }
+
+  function buildCountdown(targetDate){
+    const diff = Math.max(0, targetDate - new Date());
+    const days = Math.floor(diff/86400000);
+    const hours = Math.floor(diff%86400000/3600000);
+    const mins = Math.floor(diff%3600000/60000);
+    const secs = Math.floor(diff%60000/1000);
+    return {days,hours,mins,secs};
+  }
+
+  function renderCountdowns(){
+    const main = buildCountdown(new Date(RACE_MAIN.date));
+    $("#mainCountdown").innerHTML = [["jours",main.days],["heures",main.hours],["minutes",main.mins],["secondes",main.secs]].map(([k,v]) => `<div class="count-unit"><div class="count-value">${fmt(v)}</div><div class="count-name">${k}</div></div>`).join("");
+    const now = new Date();
+    $("#subCountdowns").innerHTML = PREP_RACES.filter(r => new Date(r.date) > now).map(r => {
+      const d = buildCountdown(new Date(r.date));
+      return `<div class="subcount"><strong>${r.name}</strong><span>${fmt(d.days)} j · ${fmt(d.hours)} h</span></div>`;
+    }).join("");
+  }
+
+  function renderNutritionSelect(active){
+    const opts = ["auto","À cadrer","À tester en course / sortie longue","En validation","Validée ?"];
+    const current = nutritionStatus === "auto" ? nutritionAuto(active) : nutritionStatus;
+    $("#nutritionSelect").innerHTML = opts.map(o => `<option value="${o}" ${nutritionStatus===o?"selected":""}>Nutrition : ${o==="auto"?`Auto — ${nutritionAuto(active)}`:o}</option>`).join("");
+    return current;
+  }
+
+  function renderDashboard(){
+    const now = today();
+    const active = getActiveWeek(now);
+    const activePhase = phaseOf(active);
+    const totals = actualTotals();
+    const planKm = totalPlanKm();
+    const planDp = totalPlanDp();
+    const elapsedWeeks = activeWeekCount(now);
+    const timeProgress = clamp(elapsedWeeks / PLAN.length * 100, 0, 100);
+    const daysRace = Math.max(0, Math.ceil((new Date(RACE_MAIN.date) - now) / 86400000));
+    const weeksRace = Math.max(0, Math.ceil(daysRace/7));
+    const nutritionCurrent = renderNutritionSelect(active);
+    $("#verticalProgress").style.height = `${timeProgress}%`;
+    $("#includeRaceToggle").checked = !!uiSettings.includeRace;
+    $("#showDpToggle").checked = !!uiSettings.showDp;
+
+    const kpis = [
+      ["Semaine en cours", `${active.id ? "S"+active.id : "S1"}`, active.objectif],
+      ["Phase", activePhase.label, `S${activePhase.start} à S${activePhase.end}`],
+      ["Type", active.type, "Priorité : D+ et muscle"],
+      ["Jours TransLantau", daysRace, "13.11.2026"],
+      ["Semaines restantes", weeksRace, "Course incluse"],
+      ["Progression temps", `${fmt1(timeProgress)}%`, `${elapsedWeeks}/21 semaines passées`]
+    ];
+    PREP_RACES.forEach(r => { const d = Math.ceil((new Date(r.date) - now)/86400000); if(d >= 0) kpis.push([`Jours ${r.name}`, d, `${r.km} km · ${r.dp} D+`]); });
+    kpis.push(["Nutrition", nutritionCurrent, "Statut modifiable"]);
+    $("#kpiGrid").innerHTML = kpis.map(k => `<article class="card"><div class="kpi-title">${k[0]}</div><div class="kpi-value ${String(k[1]).length>16?'small-value':''}">${k[1]}</div><div class="kpi-sub">${k[2]}</div></article>`).join("");
+
+    const kmPct = planKm ? totals.km / planKm * 100 : 0;
+    const dpPct = planDp ? totals.dp / planDp * 100 : 0;
+    const sessPct = totalSessions() ? totals.sessions / totalSessions() * 100 : 0;
+    const progressCards = [
+      {t:"Km réalisés / prévus",v:`${fmt1(totals.km)} / ${fmt1(planKm)} km`,p:kmPct,c:diffClass(totals.km/planKm),sub:`Écart cumulé : ${fmt1(totals.km-planKm)} km`},
+      {t:"D+ réalisé / prévu",v:`${fmt(totals.dp)} / ${fmt(planDp)} m`,p:dpPct,c:diffClass(totals.dp/planDp),sub:`Écart cumulé : ${fmt(totals.dp-planDp)} m`},
+      {t:"Séances réalisées / prévues",v:`${fmt(totals.sessions)} / ${fmt(totalSessions())}`,p:sessPct,c:diffClass(totals.sessions/totalSessions()),sub:"Saisies hebdomadaires"}
+    ];
+    $("#progressCards").innerHTML = progressCards.map(x => `<div class="card alert-${x.c}"><div class="kpi-title">${x.t}</div><div class="kpi-value small-value">${x.v}</div><div class="bar ${x.c}"><span style="width:${clamp(x.p,0,120)}%"></span></div><div class="kpi-sub">${fmt1(x.p)}% · ${x.sub}</div></div>`).join("");
+
+    const a = getWeekActuals(active);
+    const fClass = freshnessClass(a.freshness);
+    $("#currentWeekCard").className = `card ${fClass ? 'alert-'+fClass : ''}`;
+    $("#currentWeekCard").innerHTML = `<h3>S${active.id} — ${active.objectif}</h3>
+      <p class="note">${activePhase.label} · <span class="badge ${typeClass(active.type)}">${active.type}</span></p>
+      <div class="grid three">
+        <div><div class="kpi-title">Km semaine</div><div class="kpi-value small-value">${fmt1(a.km)} / ${active.kmMin===active.kmMax?fmt1(active.kmMax):`${fmt1(active.kmMin)}–${fmt1(active.kmMax)}`}</div></div>
+        <div><div class="kpi-title">D+ semaine</div><div class="kpi-value small-value">${fmt(a.dp)} / ${active.dpLabel || (active.dpMin===active.dpMax?fmt(active.dpMax):`${fmt(active.dpMin)}–${fmt(active.dpMax)}`)}</div></div>
+        <div><div class="kpi-title">Fraîcheur</div><div class="kpi-value small-value ${fClass?'color-'+fClass:''}">${a.freshness || "—"}/10</div></div>
+      </div>
+      <div class="range-line" style="margin-top:12px"><label class="sr-only" for="freshnessQuick">Fraîcheur</label><input type="range" id="freshnessQuick" min="1" max="10" value="${a.freshness || 6}"><span id="freshnessQuickVal">${a.freshness || 6}</span></div>
+      <p class="coach-note">${active.prioriteCoach}</p>`;
+
+    const entered = getEnteredWeeks();
+    const avgKm = entered.length ? entered.reduce((s,w)=>s+getWeekActuals(w).km,0)/entered.length : 0;
+    const avgDp = entered.length ? entered.reduce((s,w)=>s+getWeekActuals(w).dp,0)/entered.length : 0;
+    const rem = remainingWeeks(now);
+    const projKm = entered.length ? avgKm * rem + totals.km : null;
+    const projDp = entered.length ? avgDp * rem + totals.dp : null;
+    const atlObj = atlCtlForWeek(active.id-1);
+    const ratio = atlObj ? atlObj.ratio : null;
+    const ratioClass = ratio == null ? "" : (ratio >= .8 && ratio <= 1.3 ? "green" : (ratio > 1.5 || ratio < .5 ? "red" : "orange"));
+    $("#projectionCard").className = `card ${ratioClass?'alert-'+ratioClass:''}`;
+    $("#projectionCard").innerHTML = `<h3>Projection & charge</h3>
+      <div class="grid three">
+        <div><div class="kpi-title">Projection km</div><div class="kpi-value small-value">${projKm == null ? "Données insuffisantes" : `${fmt1(projKm)} km`}</div></div>
+        <div><div class="kpi-title">Projection D+</div><div class="kpi-value small-value">${projDp == null ? "Données insuffisantes" : `${fmt(projDp)} m`}</div></div>
+        <div><div class="kpi-title">ATL/CTL</div><div class="kpi-value small-value ${ratioClass?'color-'+ratioClass:''}">${ratio == null ? "Données insuffisantes" : fmt1(ratio)}</div></div>
+      </div>
+      <div class="bar ${ratioClass || 'gray'}"><span style="width:${ratio == null ? 0 : clamp(ratio/1.6*100,0,100)}%"></span></div>
+      <p class="note">ATL = km semaine en cours. CTL = moyenne km des 4 dernières semaines saisies. Semaines sans saisie exclues.</p>`;
+
+    const freshInput = $("#freshnessQuick");
+    freshInput?.addEventListener("input", e => { $("#freshnessQuickVal").textContent = e.target.value; });
+    freshInput?.addEventListener("change", e => { updateWeek(active.id,{freshness:num(e.target.value)}); });
+
+    renderAlerts(active, ratio);
+    renderFooterStats(timeProgress);
+  }
+
+  function renderAlerts(active, ratio){
+    const alerts = [];
+    const a = getWeekActuals(active);
+    if ((active.type === "récupération" || active.objectif.toLowerCase().includes("assimilation")) && a.km > active.kmMax * 1.1) alerts.push(["red","Semaine récupération au-dessus de 110 % du kmMax. Dérive détectée. Réduis avant de subir."]);
+    if ((active.type === "récupération" || active.objectif.toLowerCase().includes("assimilation")) && active.dpMax > 0 && a.dp > active.dpMax * 1.1) alerts.push(["red","Semaine récupération au-dessus de 110 % du D+ max. Risque inutile."]);
+    const last = latestEntryDate();
+    if (!last || (today() - last) / 86400000 > 14) alerts.push(["orange","Saisie en retard. Sans données, le pilotage est aveugle."]);
+    if (a.freshness && a.freshness <= 3) alerts.push(["red","Fraîcheur basse. Supprimer l’intensité, garder le facile."]);
+    const noteText = `${a.notes} ${a.achilles}`.toLowerCase();
+    if (noteText.includes("achille") || noteText.includes("mollet") || a.achilles === "oui") alerts.push(["red","Alerte mollet/Achille. Intensité interdite 3 à 5 jours."]);
+    if (active.id === 16 && (a.km > 92 || a.dp > 3600)) alerts.push(["red","Semaine pic au-dessus du plan. Risque inutile."]);
+    if (ratio != null && (ratio > 1.5 || ratio < .5)) alerts.push(["red","ATL/CTL hors zone rouge. Surcharge ou désentraînement détecté."]);
+    else if (ratio != null && !(ratio >= .8 && ratio <= 1.3)) alerts.push(["orange","ATL/CTL hors zone verte. Ajustement nécessaire."]);
+    if (!alerts.length) alerts.push(["green","Charge cohérente. Continue. Le D+ compte plus que le volume plat pour cette course."]);
+    $("#alertsBox").innerHTML = alerts.map(a => `<div class="card alert-${a[0]}"><strong>${a[1]}</strong></div>`).join("");
+  }
+
+  function updateWeek(id, patch){
+    const existing = weekData[id] || {};
+    const clean = {...existing, ...patch, updatedAt:new Date().toISOString()};
+    ["km","dp","sessions","freshness"].forEach(k => { if (clean[k] !== undefined) clean[k] = num(clean[k]); });
+    weekData[id] = clean;
+    save(LS.week, weekData);
+    renderAll(false);
+  }
+
+  function deleteWeek(id){
+    delete weekData[id];
+    save(LS.week, weekData);
+    renderAll(false);
+  }
+
+  const backgroundZonesPlugin = {
+    id:"backgroundZones",
+    beforeDatasetsDraw(chart){
+      const {ctx, chartArea, scales} = chart;
+      if (!chartArea || !scales.x) return;
+      const xScale = scales.x;
+      PLAN.forEach((w,i)=>{
+        const x = xScale.getPixelForValue(i);
+        const prev = i===0 ? chartArea.left : (xScale.getPixelForValue(i-1)+x)/2;
+        const next = i===PLAN.length-1 ? chartArea.right : (xScale.getPixelForValue(i+1)+x)/2;
+        const colors = {"récupération":"rgba(29,179,122,.08)","pic":"rgba(46,143,224,.10)","affûtage":"rgba(214,218,226,.07)","course préparatoire":"rgba(232,98,42,.10)","race":"rgba(255,116,46,.16)"};
+        const fill = colors[w.type] || (w.type === "spécifique" ? "rgba(232,98,42,.06)" : "rgba(232,98,42,.035)");
+        ctx.save();ctx.fillStyle = fill;ctx.fillRect(prev, chartArea.top, next-prev, chartArea.bottom-chartArea.top);ctx.restore();
+      });
+    },
+    afterDatasetsDraw(chart){
+      if (!chart.chartArea || !chart.scales.x) return;
+      const {ctx, chartArea, scales} = chart;
+      const markers = [{i:5,t:"6000D"},{i:10,t:"Luzi"},{i:11,t:"Dolmens"},{i:20,t:"TransLantau"}];
+      markers.forEach(m=>{
+        const x = scales.x.getPixelForValue(m.i);
+        ctx.save();ctx.strokeStyle="rgba(255,255,255,.34)";ctx.setLineDash([4,5]);ctx.beginPath();ctx.moveTo(x,chartArea.top);ctx.lineTo(x,chartArea.bottom);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle="#DDE2EA";ctx.font="700 11px Inter";ctx.fillText(m.t,x+5,chartArea.top+14);ctx.restore();
+      });
+    }
+  };
+
+  const atlZonesPlugin = {
+    id:"atlZones",
+    beforeDatasetsDraw(chart){
+      const {ctx, chartArea, scales} = chart;
+      if (!chartArea || !scales.y) return;
+      function zone(y1,y2,color){
+        const top = scales.y.getPixelForValue(y2), bottom = scales.y.getPixelForValue(y1);
+        ctx.save();ctx.fillStyle=color;ctx.fillRect(chartArea.left, top, chartArea.right-chartArea.left, bottom-top);ctx.restore();
+      }
+      zone(.8,1.3,"rgba(29,179,122,.10)");
+      zone(.5,.8,"rgba(232,98,42,.08)"); zone(1.3,1.5,"rgba(232,98,42,.08)");
+      zone(0,.5,"rgba(232,58,42,.08)"); zone(1.5,2,"rgba(232,58,42,.08)");
+    }
+  };
+
+  function renderCharts(){
+    if (!window.Chart) { console.warn("Chart.js indisponible"); return; }
+    Chart.defaults.color = "#DDE2EA";
+    Chart.defaults.borderColor = "rgba(138,143,154,.22)";
+    const labels = PLAN.map(w=>`S${w.id}`);
+    const kmTarget = PLAN.map(targetKm);
+    const kmActual = PLAN.map(w => weekData[w.id]?.km ?? null);
+    const dpTarget = PLAN.map(targetDp);
+    const dpActual = PLAN.map(w => weekData[w.id]?.dp ?? null);
+    const datasets = [
+      {label:"Km cible", data:kmTarget, borderColor:"#D6DAE2", borderDash:[7,6], borderWidth:2, tension:.25, pointRadius:2, yAxisID:"y"},
+      {label:"Km réel", data:kmActual, borderColor:"#E8622A", backgroundColor:"rgba(232,98,42,.18)", borderWidth:3, tension:.25, pointRadius:5, yAxisID:"y", spanGaps:false}
+    ];
+    if (uiSettings.showDp) {
+      datasets.push({label:"D+ cible",data:dpTarget,borderColor:"rgba(46,143,224,.72)",borderDash:[4,5],borderWidth:2,tension:.25,pointRadius:1,yAxisID:"y1"});
+      datasets.push({label:"D+ réel",data:dpActual,borderColor:"#2E8FE0",backgroundColor:"rgba(46,143,224,.16)",borderWidth:2,tension:.25,pointRadius:4,yAxisID:"y1",spanGaps:false});
+    }
+    const volCtx = $("#volumeChart");
+    if (volumeChart) volumeChart.destroy();
+    volumeChart = new Chart(volCtx,{
+      type:"line", data:{labels,datasets}, plugins:[backgroundZonesPlugin],
+      options:{responsive:true,maintainAspectRatio:false,interaction:{mode:"nearest",intersect:true},plugins:{legend:{labels:{boxWidth:12}},tooltip:{callbacks:{afterLabel(ctx){const w=PLAN[ctx.dataIndex];return `${w.objectif} · ${w.type}`;}}}},scales:{x:{grid:{display:false}},y:{title:{display:true,text:"Kilomètres"},beginAtZero:true,suggestedMax:100},y1:{display:uiSettings.showDp,position:"right",title:{display:true,text:"D+"},beginAtZero:true,grid:{drawOnChartArea:false}}},onClick:(evt,els)=>{if(!els.length)return;const id=els[0].index+1;openInlineForm(id);}}
+    });
+
+    const ratios = PLAN.map((w,i)=> atlCtlForWeek(i)?.ratio ?? null);
+    const atlCtx = $("#atlChart");
+    if (atlChart) atlChart.destroy();
+    atlChart = new Chart(atlCtx,{type:"line",data:{labels,datasets:[{label:"Ratio ATL/CTL",data:ratios,borderColor:"#E8622A",backgroundColor:"rgba(232,98,42,.18)",borderWidth:3,pointRadius:4,tension:.22}]},plugins:[atlZonesPlugin],options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{beginAtZero:true,min:0,max:2,ticks:{stepSize:.25}}}}});
+  }
+
+  function openInlineForm(id){
+    const w = PLAN.find(x=>x.id===id); if(!w) return;
+    const a = getWeekActuals(w);
+    $("#inlineWeekForm").classList.add("active");
+    $("#inlineWeekForm").innerHTML = `<h3>S${w.id} — saisie rapide</h3><form id="quickForm" class="form-grid">
+      <div class="field"><label for="qKm">Km réel</label><input id="qKm" type="number" min="0" step="0.1" value="${a.km}"></div>
+      <div class="field"><label for="qDp">D+ réel</label><input id="qDp" type="number" min="0" step="1" value="${a.dp}"></div>
+      <div class="field"><label for="qSessions">Séances réalisées</label><input id="qSessions" type="number" min="0" step="1" value="${a.sessions}"></div>
+      <div class="field"><label for="qFresh">Fraîcheur 1–10</label><input id="qFresh" type="number" min="1" max="10" step="1" value="${a.freshness || 6}"></div>
+      <div class="field full"><label for="qNotes">Notes</label><textarea id="qNotes">${escapeHtml(a.notes)}</textarea></div>
+      <div class="field full"><button class="btn orange" type="submit">Sauvegarder</button></div>
+    </form>`;
+    $("#quickForm").addEventListener("submit", e => { e.preventDefault(); updateWeek(id,{km:$("#qKm").value,dp:$("#qDp").value,sessions:$("#qSessions").value,freshness:$("#qFresh").value,notes:$("#qNotes").value}); });
+    $("#inlineWeekForm").scrollIntoView({behavior:"smooth",block:"nearest"});
+  }
+
+  function renderTimeline(){
+    const now = today();
+    const active = getActiveWeek(now);
+    $("#timelineCards").innerHTML = PLAN.map(w=>{
+      const cls = ["week-card", w.id===active.id?"active":"", w.type==="race"?"race":""].join(" ");
+      return `<button class="${cls}" data-week="${w.id}" aria-label="Ouvrir S${w.id}">
+        <div class="week-top"><div><div class="week-id">S${w.id}</div><div class="week-date">${formatDateRange(w.start,w.end)}</div></div><span class="badge ${typeClass(w.type)}">${w.type}</span></div>
+        <div class="week-objectif">${w.id===21?"TRANSLANTAU — ":""}${w.objectif}</div>
+        <div class="week-meta"><span>${phaseOf(w).label}</span><span>${formatRange(w.kmMin,w.kmMax,"km")} · ${w.dpLabel || formatRange(w.dpMin,w.dpMax,"D+")}</span>${w.course?`<span class="badge race">${w.course.name} · ${w.course.km} km · ${w.course.dp} D+</span>`:""}</div>
+        <div class="status">${statusOfWeek(w,now)}</div>
+      </button>`;
+    }).join("");
+    $$(".week-card").forEach(btn=>btn.addEventListener("click",()=>openDrawer(Number(btn.dataset.week))));
+  }
+
+  function openDrawer(id){
+    selectedWeekId = id;
+    const w = PLAN.find(x=>x.id===id); const a = getWeekActuals(w);
+    const drawer = $("#weekDrawer");
+    drawer.innerHTML = `<div class="drawer-head"><div><h2>S${w.id} — ${w.objectif}</h2><p class="note">${formatDateRange(w.start,w.end)} · ${phaseOf(w).label} · <span class="badge ${typeClass(w.type)}">${w.type}</span></p></div><button class="close" id="closeDrawer" aria-label="Fermer">×</button></div>
+      ${w.course?`<div class="coach-note">Course : ${w.course.name} · ${w.course.km} km · ${w.course.dp} D+ · ${w.course.role}</div>`:""}
+      <div class="coach-note">${w.prioriteCoach}</div>
+      <h3>Séances prévues</h3><ul class="seance-list">${w.seances.map(s=>`<li>${s}</li>`).join("")}</ul>
+      <form id="drawerForm" style="margin-top:14px"><div class="form-grid">
+        <div class="field"><label for="dKm">Km réel</label><input id="dKm" type="number" min="0" step="0.1" value="${a.km}"></div>
+        <div class="field"><label for="dDp">D+ réel</label><input id="dDp" type="number" min="0" step="1" value="${a.dp}"></div>
+        <div class="field"><label for="dSessions">Séances réalisées</label><input id="dSessions" type="number" min="0" step="1" value="${a.sessions}"></div>
+        <div class="field"><label for="dFresh">Fraîcheur</label><input id="dFresh" type="number" min="1" max="10" step="1" value="${a.freshness || 6}"></div>
+        <div class="field"><label for="dAchilles">Douleur mollet/Achille</label><select id="dAchilles"><option value="non" ${a.achilles!=="oui"?"selected":""}>Non</option><option value="oui" ${a.achilles==="oui"?"selected":""}>Oui</option></select></div>
+        <div class="field"><label for="dCramps">Crampes</label><select id="dCramps"><option value="non" ${a.cramps!=="oui"?"selected":""}>Non</option><option value="oui" ${a.cramps==="oui"?"selected":""}>Oui</option></select></div>
+        <div class="field full"><label for="dNotes">Notes libres</label><textarea id="dNotes">${escapeHtml(a.notes)}</textarea></div>
+      </div><div class="section-actions" style="margin-top:12px"><button class="btn orange" type="submit">Sauvegarder</button><button class="btn danger" type="button" id="deleteWeek">Effacer cette semaine</button></div></form>`;
+    drawer.classList.add("open"); drawer.setAttribute("aria-hidden","false");
+    $("#closeDrawer").addEventListener("click", closeDrawer);
+    $("#drawerForm").addEventListener("submit", e=>{e.preventDefault();updateWeek(id,{km:$("#dKm").value,dp:$("#dDp").value,sessions:$("#dSessions").value,freshness:$("#dFresh").value,achilles:$("#dAchilles").value,cramps:$("#dCramps").value,notes:$("#dNotes").value});openDrawer(id);});
+    $("#deleteWeek").addEventListener("click",()=>{deleteWeek(id);closeDrawer();});
+  }
+  function closeDrawer(){ const d=$("#weekDrawer"); d.classList.remove("open"); d.setAttribute("aria-hidden","true"); }
+
+  function renderPhases(){
+    const now = today();
+    $("#phaseCards").innerHTML = PHASES.map(p=>{
+      const weeks = PLAN.filter(w=>w.id>=p.start && w.id<=p.end);
+      const planKm = weeks.reduce((s,w)=>s+targetKm(w),0);
+      const planDp = weeks.reduce((s,w)=>s+targetDp(w),0);
+      const act = weeks.reduce((a,w)=>{ const d=getWeekActuals(w); a.km+=d.km; a.dp+=d.dp; return a;},{km:0,dp:0});
+      const first = dateLocal(weeks[0].start); const last = new Date(dateLocal(weeks.at(-1).end).getTime()+86400000);
+      const status = now < first ? "À venir" : now > last ? "Terminée" : "En cours";
+      const pct = planKm ? act.km/planKm*100 : 0;
+      return `<article class="card"><div class="phase-title">${p.label}</div><div class="phase-weeks">S${p.start} à S${p.end} · ${status}${status==="Terminée"?" · ✓ Terminée":""}</div>
+        <div class="metric-line"><span>Km prévus</span><strong>${fmt1(planKm)}</strong></div><div class="metric-line"><span>Km réalisés</span><strong>${fmt1(act.km)}</strong></div>
+        <div class="metric-line"><span>D+ prévu</span><strong>${fmt(planDp)}</strong></div><div class="metric-line"><span>D+ réalisé</span><strong>${fmt(act.dp)}</strong></div>
+        <div class="bar ${diffClass(act.km/planKm)}"><span style="width:${clamp(pct,0,120)}%"></span></div>
+        <p class="note">Complétion ${fmt1(pct)}%${status==="Terminée"?` · écart km ${fmt1(act.km-planKm)} · écart D+ ${fmt(act.dp-planDp)}`:""}</p></article>`;
+    }).join("");
+  }
+
+  function renderRadar(){
+    const sliders = $("#radarSliders");
+    sliders.innerHTML = RADAR_AXES.map(axis=>`<div class="slider-row"><label for="radar-${slug(axis)}"><span>${axis}</span><strong>${radarStore.current?.[axis] ?? 5}</strong></label><input id="radar-${slug(axis)}" type="range" min="1" max="10" value="${radarStore.current?.[axis] ?? 5}" data-axis="${axis}"></div>`).join("");
+    sliders.querySelectorAll("input").forEach(input=>input.addEventListener("input",e=>{radarStore.current[e.target.dataset.axis]=num(e.target.value);e.target.previousElementSibling.querySelector("strong").textContent=e.target.value;drawRadar(false);}));
+    $("#radarDate").textContent = radarStore.date ? `Dernière sauvegarde : ${new Date(radarStore.date).toLocaleString("fr-FR")}` : "Aucune sauvegarde radar.";
+    drawRadar(false);
+  }
+
+  function drawRadar(rebuild=true){
+    if (!window.Chart) return;
+    const ctx = $("#radarChart");
+    if (radarChart) radarChart.destroy();
+    const current = RADAR_AXES.map(a=>radarStore.current?.[a] ?? 5);
+    const datasets = [{label:"Actuel",data:current,borderColor:"#E8622A",backgroundColor:"rgba(232,98,42,.18)",pointBackgroundColor:"#E8622A",borderWidth:2}];
+    if (radarStore.previous) datasets.push({label:"Précédent",data:RADAR_AXES.map(a=>radarStore.previous[a] ?? 5),borderColor:"rgba(214,218,226,.52)",backgroundColor:"rgba(214,218,226,.06)",pointBackgroundColor:"rgba(214,218,226,.65)",borderWidth:1});
+    radarChart = new Chart(ctx,{type:"radar",data:{labels:RADAR_AXES,datasets},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:"bottom"}},scales:{r:{min:0,max:10,ticks:{stepSize:2,backdropColor:"transparent"},grid:{color:"rgba(138,143,154,.22)"},angleLines:{color:"rgba(138,143,154,.22)"}}}}});
+  }
+
+  function saveRadar(){
+    const old = safeParse(LS.radar, null);
+    radarStore.previous = old?.current || radarStore.previous || null;
+    radarStore.date = new Date().toISOString();
+    save(LS.radar, radarStore);
+    renderRadar();
+  }
+
+  function renderJournal(){
+    const todayIso = new Date().toISOString().slice(0,10);
+    if (!$("#jDate").value) $("#jDate").value = todayIso;
+    $("#jType").innerHTML = JOURNAL_TYPES.map(t=>`<option>${t}</option>`).join("");
+    $("#journalFilter").innerHTML = `<option value="all">Tous types</option>` + JOURNAL_TYPES.map(t=>`<option>${t}</option>`).join("");
+    renderJournalList();
+  }
+
+  function renderJournalList(){
+    const type = $("#journalFilter")?.value || "all";
+    const q = ($("#journalSearch")?.value || "").toLowerCase();
+    const filtered = [...journal].filter(j => (type==="all" || j.type===type) && (!q || (j.notes||"").toLowerCase().includes(q))).sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+    $("#journalList").innerHTML = filtered.length ? filtered.map(j=>`<article class="journal-item"><div class="journal-head"><div><strong>${j.type} ${j.feel || ""}</strong><div class="journal-meta">${j.date} · ${fmt1(j.km)} km · ${fmt(j.dp)} D+ · RPE ${j.rpe}</div></div><button class="btn danger" data-jdel="${j.id}">Supprimer</button></div><div class="journal-meta">Durée : ${escapeHtml(j.duration || "—")} · Mollet/Achille : ${j.achilles} · Crampes : ${j.cramps}</div>${j.notes?`<div class="journal-note">${escapeHtml(j.notes)}</div>`:""}</article>`).join("") : `<div class="card"><strong>Aucune entrée.</strong><p class="note">Saisie attendue.</p></div>`;
+    $$('[data-jdel]').forEach(b=>b.addEventListener("click",()=>{journal=journal.filter(j=>j.id!==b.dataset.jdel);save(LS.journal,journal);renderJournalList();renderDashboard();}));
+    renderMonthSummary();
+  }
+
+  function renderMonthSummary(){
+    const byMonth = {};
+    journal.forEach(j=>{ const m=(j.date||"").slice(0,7); if(!m)return; byMonth[m] ||= {km:0,dp:0,count:0}; byMonth[m].km += num(j.km); byMonth[m].dp += num(j.dp); byMonth[m].count += 1; });
+    const rows = Object.entries(byMonth).sort((a,b)=>b[0].localeCompare(a[0])).slice(0,8).map(([m,v])=>`<div class="metric-line"><span>${m}</span><strong>${fmt1(v.km)} km · ${fmt(v.dp)} D+ · ${v.count} entrées</strong></div>`);
+    $("#monthSummary").innerHTML = `<h3>Résumé mensuel</h3>${rows.length?rows.join(""):'<p class="note">Données insuffisantes.</p>'}`;
+  }
+
+  function addJournal(e){
+    e.preventDefault();
+    const entry = {id:`j_${Date.now()}`,date:$("#jDate").value,type:$("#jType").value,feel:$("#jFeel").value,km:num($("#jKm").value),dp:num($("#jDp").value),duration:$("#jDuration").value,rpe:num($("#jRpe").value),achilles:$("#jAchilles").value,cramps:$("#jCramps").value,notes:$("#jNotes").value};
+    journal.push(entry); save(LS.journal,journal); e.target.reset(); $("#jDate").value = new Date().toISOString().slice(0,10); renderJournalList(); renderDashboard();
+  }
+
+  function renderQuotes(){
+    $("#quoteTrack").innerHTML = QUOTES.map(q=>`<div class="quote-slide"><div>${q}</div></div>`).join("");
+    updateQuote();
+  }
+  let quoteIndex = 0;
+  function updateQuote(){ $("#quoteTrack").style.transform = `translateX(-${quoteIndex*100}%)`; }
+  function nextQuote(delta=1){ quoteIndex = (quoteIndex + delta + QUOTES.length) % QUOTES.length; updateQuote(); }
+
+  function rotateHeroMantra(){
+    const el = $("#heroMantra");
+    let i = Math.floor(Math.random()*HERO_MANTRAS.length);
+    setInterval(()=>{ el.style.opacity = 0; setTimeout(()=>{ i=(i+1)%HERO_MANTRAS.length; el.textContent = HERO_MANTRAS[i]; el.style.opacity = 1; },460); },30000);
+  }
+
+  function renderFooterStats(timeProgress){
+    const totals = actualTotals();
+    $("#footerStats").innerHTML = [
+      ["Total km plan", `${fmt1(totalPlanKm())} km`],
+      ["Total D+ plan", `${fmt(totalPlanDp())} m`],
+      ["Séances prévues", fmt(totalSessions())],
+      ["Progression globale", `${fmt1(timeProgress)}% temps · ${fmt1(totals.km/totalPlanKm()*100)}% km`]
+    ].map(x=>`<div class="card"><div class="kpi-title">${x[0]}</div><div class="kpi-value small-value">${x[1]}</div></div>`).join("");
+  }
+
+  function bindEvents(){
+    $("#includeRaceToggle")?.addEventListener("change",e=>{uiSettings.includeRace=e.target.checked;save(LS.ui,uiSettings);renderAll(false);});
+    $("#showDpToggle")?.addEventListener("change",e=>{uiSettings.showDp=e.target.checked;save(LS.ui,uiSettings);renderCharts();});
+    $("#nutritionSelect")?.addEventListener("change",e=>{nutritionStatus=e.target.value; if(nutritionStatus==="auto") localStorage.removeItem(LS.nutrition); else localStorage.setItem(LS.nutrition,nutritionStatus); renderDashboard();});
+    $("#saveRadar")?.addEventListener("click",saveRadar);
+    $("#journalForm")?.addEventListener("submit",addJournal);
+    $("#journalFilter")?.addEventListener("change",renderJournalList);
+    $("#journalSearch")?.addEventListener("input",renderJournalList);
+    $("#prevQuote")?.addEventListener("click",()=>nextQuote(-1));
+    $("#nextQuote")?.addEventListener("click",()=>nextQuote(1));
+    document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeDrawer(); });
+  }
+
+  function renderAll(rebind=true){
+    renderCountdowns(); renderDashboard(); renderCharts(); renderTimeline(); renderPhases(); renderRadar(); renderJournal(); renderQuotes(); if(rebind) bindEvents();
+  }
+
+  function formatRange(a,b,unit){
+    if (unit === "D+") return a===b ? `${fmt(a)} D+` : `${fmt(a)}–${fmt(b)} D+`;
+    return a===b ? `${fmt1(a)} ${unit}` : `${fmt1(a)}–${fmt1(b)} ${unit}`;
+  }
+  function formatDateRange(s,e){
+    const opt = {day:"2-digit",month:"short"};
+    return `${dateLocal(s).toLocaleDateString("fr-FR",opt)} – ${dateLocal(e).toLocaleDateString("fr-FR",opt)}`.replace(/\./g,"");
+  }
+  function escapeHtml(str){ return String(str ?? "").replace(/[&<>'"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c])); }
+  function slug(s){return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/gi,"-").toLowerCase();}
+
+  document.addEventListener("DOMContentLoaded",()=>{
+    renderAll(true);
+    rotateHeroMantra();
+    setInterval(renderCountdowns,1000);
+    setInterval(()=>nextQuote(1),5000);
+  });
+  </script>
+</body>
+</html>
