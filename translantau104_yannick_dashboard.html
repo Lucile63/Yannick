@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" integrity="sha512-D/fkxORGQ+OSpEVR3VILlBiYItrh2B080KSDNF9nQFWHyksLlyPuU7mCV5Lu8u0Md9gE5wErNV0h7LNIWMW6fA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <style>
     :root{
       --bg:#0A0C0F;
@@ -67,7 +67,7 @@
     .split-panel{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(320px,.8fr);gap:12px}.chart-wrap{position:relative;min-height:360px}.chart-wrap.small{min-height:300px}canvas{width:100%!important;max-height:430px}.chart-form{display:none;border:1px solid rgba(232,98,42,.35);background:#0D1117;padding:12px;border-radius:var(--radius);margin-top:12px}.chart-form.active{display:block}
     .timeline{display:flex;gap:12px;overflow-x:auto;padding:6px 2px 12px;scroll-snap-type:x proximity}.week-card{min-width:260px;scroll-snap-align:start;border:1px solid var(--line);background:#0D1117;border-radius:var(--radius);padding:14px;text-align:left;color:var(--text);transition:.18s ease}.week-card:hover,.week-card:focus{border-color:var(--orange);outline:none;transform:translateY(-2px)}.week-card.active{border:2px solid var(--orange);transform:scale(1.02);box-shadow:0 0 26px rgba(232,98,42,.22)}.week-card.race{animation:racePulse 1.8s infinite ease-in-out}.week-top{display:flex;align-items:start;justify-content:space-between;gap:8px}.week-id{font-family:"Bebas Neue";font-size:42px;color:#fff}.week-date{font-size:12px;color:var(--muted);font-weight:800;text-transform:uppercase}.week-objectif{font-weight:800;margin:12px 0 8px}.week-meta{font-size:12px;color:var(--muted);display:grid;gap:5px}.status{margin-top:10px;font-weight:900;font-size:12px;text-transform:uppercase;color:var(--muted)}
     .drawer{position:fixed;right:0;top:0;height:100vh;width:min(560px,100%);background:#0D1117;border-left:1px solid var(--line);box-shadow:-18px 0 48px rgba(0,0,0,.55);z-index:40;padding:20px;overflow:auto;transform:translateX(105%);transition:transform .24s ease}.drawer.open{transform:translateX(0)}.drawer-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}.close{background:#151A21;border:1px solid var(--line);color:#fff;border-radius:var(--radius);padding:9px 11px}
-    .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.field{display:grid;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:900}.field input,.field select,.field textarea{width:100%;background:#090C10;border:1px solid #27303B;color:#fff;border-radius:var(--radius);padding:10px;min-height:41px}.field textarea{min-height:96px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid rgba(232,98,42,.5);border-color:var(--orange)}.range-line{display:flex;align-items:center;gap:10px}.range-line input{flex:1}.range-line span{font-weight:900;color:var(--orange);min-width:28px}.seance-list{margin:12px 0 0;padding-left:18px;color:#DDE2EA}.seance-list li{margin:7px 0}.coach-note{border-left:4px solid var(--orange);padding:10px 12px;background:rgba(232,98,42,.08);font-weight:800;color:#fff;margin:12px 0}
+    .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.field{display:grid;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:900}.field input,.field select,.field textarea{width:100%;background:#090C10;border:1px solid #27303B;color:#fff;border-radius:var(--radius);padding:10px;min-height:41px}.field textarea{min-height:96px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid rgba(232,98,42,.5);border-color:var(--orange)}.range-line{display:flex;align-items:center;gap:10px}.range-line input{flex:1}.range-line span{font-weight:900;color:var(--orange);min-width:28px}.seance-list{margin:12px 0 0;padding-left:18px;color:#DDE2EA}.seance-list li{margin:7px 0}.coach-note{border-left:4px solid var(--orange);padding:10px 12px;background:rgba(232,98,42,.08);font-weight:800;color:#fff;margin:12px 0}.session-cards{display:grid;gap:10px;margin-top:12px}.session-card{border:1px solid var(--line);background:#0A0E13;border-radius:var(--radius);padding:12px}.session-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:8px}.session-code{font-family:"Bebas Neue";font-size:26px;color:var(--orange);line-height:1}.session-type{font-weight:900;color:#fff}.session-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin:8px 0}.session-meta span{border:1px solid #26303B;background:#090C10;padding:6px 8px;border-radius:var(--radius);font-size:12px;color:#DDE2EA}.session-content{font-weight:800;margin:8px 0}.session-consigne{color:#C8CDD5;border-left:3px solid var(--blue);padding-left:9px;margin-top:8px}.source-notes{margin-top:12px;display:grid;gap:8px}
     .phase-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.phase-title{font-family:"Bebas Neue";font-size:31px}.phase-weeks{color:var(--muted);font-size:12px;text-transform:uppercase;font-weight:800}.metric-line{display:flex;justify-content:space-between;gap:10px;margin:8px 0;color:#DDE2EA;font-size:13px}.metric-line strong{color:#fff}.radar-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,420px);gap:16px;align-items:start}.slider-list{display:grid;gap:12px}.slider-row{display:grid;gap:6px}.slider-row label{display:flex;justify-content:space-between;font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:900}.slider-row input{width:100%;accent-color:var(--orange)}
     .journal-layout{display:grid;grid-template-columns:minmax(280px,420px) minmax(0,1fr);gap:14px}.journal-list{display:grid;gap:10px;max-height:560px;overflow:auto;padding-right:4px}.journal-item{border:1px solid var(--line);background:#0D1117;padding:12px;border-radius:var(--radius)}.journal-head{display:flex;justify-content:space-between;gap:10px}.journal-head strong{font-family:"Bebas Neue";font-size:26px}.journal-meta{color:var(--muted);font-size:12px}.journal-note{margin-top:8px;color:#DCE1EA}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.filters input,.filters select{background:#090C10;border:1px solid #27303B;color:#fff;border-radius:var(--radius);padding:9px}.month-summary{margin-top:12px;color:#DCE1EA;font-size:13px;display:grid;gap:6px}
     details{border:1px solid var(--line);background:#0D1117;border-radius:var(--radius);padding:12px}summary{font-weight:900;text-transform:uppercase;letter-spacing:.06em;cursor:pointer}.rules-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}.rules-grid ol,.rules-grid ul{margin:10px 0 0;padding-left:20px}.rules-grid li{margin:7px 0}.adjust-table{width:100%;border-collapse:collapse;margin-top:12px;font-size:13px}.adjust-table th,.adjust-table td{border:1px solid var(--line);padding:9px;text-align:left}.adjust-table th{color:#fff;background:#121820;text-transform:uppercase;font-size:11px;letter-spacing:.08em}.adjust-table td:first-child{font-weight:800;color:#fff}
@@ -85,8 +85,9 @@
         <div class="badge race">Race target · 13.11.2026</div>
         <h1>TransLantau 104 — Préparation Yannick</h1>
         <p class="subtitle">104 km · 4500 D+ · Hong Kong · 13.11.2026</p>
-        <div class="mantra-hero" id="heroMantra" aria-live="polite">Les jambes souffrent, la tête décide.</div>
-        <div class="rule-key">78 km avec 4300 D+ bien absorbés valent mieux que 85 km roulants.</div>
+        <p class="note">Source unique : plan_source_verite_V6.md · séances détaillées vérifiées.</p>
+        <div class="mantra-hero" id="heroMantra" aria-live="polite">RPE → terrain → durée → D+ → FC en garde-fou.</div>
+        <div class="rule-key">Priorité source V6 : temps + D+ + RPE. Si distance et terrain contredisent, le temps et le D+ font foi.</div>
       </div>
       <aside class="count-box" aria-label="Compte à rebours courses">
         <div class="count-main">
@@ -229,38 +230,39 @@
         </div>
       </div>
       <details open>
-        <summary>Priorités, règles fixes, nutrition et signaux</summary>
+        <summary>Pilotage, règles fixes et signaux V6</summary>
         <div class="rules-grid">
           <div class="card">
-            <h3>Ordre de priorité</h3>
+            <h3>Pilotage prioritaire</h3>
             <ol>
-              <li>D+ spécifique</li><li>Descente / quadriceps</li><li>Sortie longue</li><li>Nutrition</li><li>Fraîcheur</li><li>Kilométrage</li>
+              <li>RPE</li><li>Terrain</li><li>Durée</li><li>D+</li><li>FC en garde-fou secondaire</li>
             </ol>
+            <p class="note">Si la distance contredit le temps, le D+, le terrain ou le RPE : priorité au temps + D+ + RPE.</p>
           </div>
           <div class="card">
-            <h3>Règles fixes</h3>
+            <h3>Règles fixes V6</h3>
             <ul>
-              <li>Jamais deux séances dures cardio consécutives.</li><li>Après sortie longue &gt;3h30 : lendemain très facile ou repos.</li><li>Renfo mollets/soléaires deux fois par semaine jusqu’à octobre.</li><li>Descente travaillée en fatigue.</li><li>Toutes les 3 à 4 semaines : semaine allégée.</li><li>Les préparatoires ne cassent pas le bloc TransLantau.</li><li>La 6000D calibre chrono cible et ajustements finaux.</li>
+              <li>Jamais deux séances cardio dures consécutives.</li><li>Après sortie longue &gt;3h30 : lendemain très facile ou repos.</li><li>Renfo mollets/soléaires deux fois par semaine jusqu’à mi-octobre, puis réduction.</li><li>Descente travaillée en fatigue, sauf semaine de récupération.</li><li>Toutes les 3 à 4 semaines : semaine allégée.</li><li>Les courses de préparation ne doivent pas casser le bloc TransLantau.</li><li>Ne jamais augmenter simultanément volume, D+, intensité et descente agressive.</li>
             </ul>
           </div>
           <div class="card">
-            <h3>Nutrition ultra</h3>
+            <h3>Nutrition / hydratation</h3>
             <ul>
-              <li>70 à 90 g glucides/heure à tester progressivement.</li><li>Prise toutes les 20 minutes.</li><li>500 à 750 ml/h selon chaleur et tolérance.</li><li>Sodium à adapter à la sudation et à l’humidité.</li><li>Rien de nouveau le jour de la TransLantau.</li>
+              <li>Aucune cible chiffrée glucides, eau ou sodium n’est donnée dans V6.</li><li>La nutrition/hydratation est à tester sur les sorties longues et la 6000D.</li><li>Le chrono cible sera défini après la 6000D selon performance réelle et état musculaire à J+2/J+3.</li>
             </ul>
           </div>
         </div>
         <table class="adjust-table">
           <thead><tr><th>Signal</th><th>Décision</th></tr></thead>
           <tbody>
-            <tr><td>Douleur tendon d’Achille</td><td>Supprimer intensité 3 à 5 jours.</td></tr>
-            <tr><td>Raideur mollet &gt;48h</td><td>Pas de charge lourde mollet, endurance facile ou vélo.</td></tr>
-            <tr><td>Crampes sur séance courte</td><td>Réduire intensité, vérifier fatigue et hydratation.</td></tr>
-            <tr><td>Quadriceps détruits &gt;72h</td><td>Baisser D+ de 30 à 40 %.</td></tr>
-            <tr><td>FC anormalement haute à allure facile</td><td>Remplacer qualité par footing facile.</td></tr>
-            <tr><td>Jambes lourdes en descente deux séances consécutives</td><td>Supprimer descentes agressives.</td></tr>
-            <tr><td>Sommeil dégradé &gt;3 jours</td><td>Réduire charge.</td></tr>
-            <tr><td>Fraîcheur ≤3/10</td><td>Pas de séance dure.</td></tr>
+            <tr><td>Douleur mollet/Achille</td><td>Supprimer l’intensité pendant 3 à 5 jours. Remplacer par endurance facile ou vélo.</td></tr>
+            <tr><td>Raideur mollet persistante &gt;48h</td><td>Ne pas charger les mollets lourdement. Mobilité douce.</td></tr>
+            <tr><td>Crampes sur séance courte</td><td>Traiter comme signal d’alerte : intensité supprimée, charge mollet limitée.</td></tr>
+            <tr><td>Perte de foulée en descente</td><td>Reprendre seulement si la foulée redevient normale.</td></tr>
+            <tr><td>FC anormalement haute à allure facile</td><td>Réduire la charge, footing facile ou vélo.</td></tr>
+            <tr><td>Jambes lourdes en descente deux séances consécutives</td><td>Réduire la charge. Pas de descente agressive.</td></tr>
+            <tr><td>Sommeil dégradé &gt;3 jours</td><td>Réduire la charge.</td></tr>
+            <tr><td>Fatigue mentale inhabituelle ou baisse de motivation marquée</td><td>Réduire la charge.</td></tr>
           </tbody>
         </table>
       </details>
@@ -268,7 +270,7 @@
 
     <section id="quotes">
       <div class="section-head">
-        <div><h2>Mantras / citations</h2><p>Rotation automatique toutes les 5 secondes. Navigation manuelle.</p></div>
+        <div><h2>Rappels source V6</h2><p>Rotation automatique toutes les 5 secondes. Navigation manuelle.</p></div>
       </div>
       <div class="quote-carousel" aria-live="polite"><div class="quote-track" id="quoteTrack"></div></div>
       <div class="quote-nav"><button class="btn" id="prevQuote">Précédent</button><button class="btn" id="nextQuote">Suivant</button></div>
@@ -320,31 +322,1805 @@
   ];
 
   const PLAN = [
-    {id:1,label:"S1 — Reprise structurée + côtes",start:"2026-06-22",end:"2026-06-28",phase:0,type:"charge",kmMin:58,kmMax:58,dpMin:1200,dpMax:1200,objectif:"Relancer sans surcharge.",seances:["Séance côtes : 20 min échauffement + 10 × 1 min côte RPE 7 / récup descente + retour au calme.","Footing : 1h en endurance facile.","Renfo + footing : 35–45 min facile + mollets/soléaires.","Sortie longue : 2h30 vallonné, 600–700 D+, RPE 3–4.","Sortie fatigue : 1h15 facile avec 6 lignes droites de 15 sec."],prioriteCoach:"Relancer propre. Le D+ doit être absorbé, pas subi."},
-    {id:2,label:"S2 — Force montée + endurance",start:"2026-06-29",end:"2026-07-05",phase:0,type:"charge",kmMin:62,kmMax:62,dpMin:1500,dpMax:1500,objectif:"Force montée + endurance.",seances:["Côtes longues : 5 × 5 min montée RPE 6 / récup descente.","Footing facile 1h.","Home trainer ou footing 45 min facile + renfo.","Sortie longue : 3h, 800–900 D+.","Rando-course : 1h30, marche active en montée avec bâtons."],prioriteCoach:"Construire la montée. Pas d’ego sur les allures."},
-    {id:3,label:"S3 — Premier bloc D+",start:"2026-07-06",end:"2026-07-12",phase:0,type:"charge",kmMin:66,kmMax:66,dpMin:1800,dpMax:1800,objectif:"Premier bloc D+.",seances:["Côtes mixtes : 6 × 3 min RPE 7 + 6 × 30 sec dynamique.","Footing 1h10 facile.","Renfo + footing 45 min.","Sortie longue : 3h15–3h30, 1000 D+, finir par 20 min descente contrôlée.","Sortie fatigue : 1h30 facile."],prioriteCoach:"Descente contrôlée en fin de long. Pas de freinage destructeur."},
-    {id:4,label:"S4 — Assimilation",start:"2026-07-13",end:"2026-07-19",phase:0,type:"récupération",kmMin:50,kmMax:50,dpMin:900,dpMax:900,objectif:"Absorber.",seances:["Une seule séance qualité : 8 × 1 min côte.","Sortie longue limitée à 2h15.","Renfo maintenu, mais charges réduites de 30 %.","Aucun effort au seuil prolongé."],prioriteCoach:"Semaine allégée. Trop charger ici est une erreur."},
-    {id:5,label:"S5 — Spécifique 6000D",start:"2026-07-20",end:"2026-07-26",phase:1,type:"spécifique",kmMin:68,kmMax:68,dpMin:2100,dpMax:2100,objectif:"Préparer le choc musculaire de la 6000D.",seances:["Côtes longues : 4 × 8 min montée RPE 6, bâtons si possible.","Footing 1h facile.","Renfo jambes : mollets + soléaires + quadriceps excentrique.","Sortie longue : 3h45 à 4h, 1200–1400 D+, allure très maîtrisée.","Sortie fatigue : 1h15 facile, terrain souple."],prioriteCoach:"Le choc musculaire se prépare avant la course."},
-    {id:6,label:"S6 — 6000D",start:"2026-07-27",end:"2026-08-02",phase:1,type:"course préparatoire",kmMin:65,kmMax:75,dpMin:2500,dpMax:3000,objectif:"Course test, pas objectif maximal.",course:{name:"6000D",date:"2026-08-01",km:42,dp:2100,role:"Test spécifique principal"},seances:["J-5 ou J-4 : 45 min facile + 6 × 20 sec.","J-3 : repos ou 30 min très facile.","J-2 : repos.","J-1 : 20–25 min footing + mobilité.","Course 6000D : départ contrôlé, RPE 4–5 maximum sur les premières longues montées.","Ne pas courir les pentes trop raides si marche active plus rentable.","Descente propre, relâchée, pas agressive au début.","Après course : 2 jours off ou marche. Pas de séance dure pendant 7 jours."],prioriteCoach:"Finir avec de la tenue musculaire. Pas de démonstration inutile."},
-    {id:7,label:"S7 — Récupération réelle",start:"2026-08-03",end:"2026-08-09",phase:1,type:"récupération",kmMin:35,kmMax:45,dpMin:500,dpMax:800,objectif:"Récupération réelle.",seances:["2 footings très faciles de 40–50 min.","1 vélo facile 45–60 min.","1 sortie vallonnée 1h30 si jambes OK.","Renfo léger : gainage, mobilité, mollets sans charge lourde.","Critère pour reprendre : jambes normales en descente. Si quadriceps ou mollets encore lourds, réduire."],prioriteCoach:"Récupérer est une séance. Forcer ici décale tout."},
-    {id:8,label:"S8 — Rebuild propre",start:"2026-08-10",end:"2026-08-16",phase:2,type:"charge",kmMin:65,kmMax:65,dpMin:1700,dpMax:1700,objectif:"Rebuild propre.",seances:["Côtes : 6 × 4 min RPE 6–7.","Footing 1h facile.","Renfo complet.","Sortie longue : 3h15, 1000 D+.","Sortie fatigue : 1h30 rando-course."],prioriteCoach:"Repartir propre. Aucune dette de la 6000D."},
-    {id:9,label:"S9 — Bloc endurance musculaire",start:"2026-08-17",end:"2026-08-23",phase:2,type:"spécifique",kmMin:72,kmMax:72,dpMin:2200,dpMax:2200,objectif:"Bloc endurance musculaire.",seances:["Bloc sur 2 jours successifs — Jour A : 1h30 avec 8 × 2 min côte RPE 7.","Jour B : sortie longue 4h, 1300–1500 D+, RPE 3–4.","Footing 1h facile.","Footing 45 min + renfo.","Sortie récupération 1h."],prioriteCoach:"Le bloc successif construit la durabilité. RPE contrôlé obligatoire."},
-    {id:10,label:"S10 — Bloc spécifique ultra",start:"2026-08-24",end:"2026-08-30",phase:2,type:"spécifique",kmMin:76,kmMax:76,dpMin:2500,dpMax:2500,objectif:"Simuler fatigue TransLantau.",seances:["Bloc 3 jours — Jour 1 : 1h15 avec 5 × 6 min montée RPE 6.","Jour 2 : 3h30–4h vallonné, 1400 D+, bâtons.","Jour 3 : 1h45 très facile avec marche active en montée.","Si les mollets tirent, enlever le jour 3."],prioriteCoach:"Si mollets tirent, tu coupes le jour 3. Pas de négociation."},
-    {id:11,label:"S11 — Luzi’trail",start:"2026-08-31",end:"2026-09-06",phase:3,type:"course préparatoire",kmMin:58,kmMax:65,dpMin:1300,dpMax:1600,objectif:"Luzi’trail 16 km — séance qualitative.",course:{name:"Luzi’trail",date:"2026-09-06",km:16,dp:410,role:"Rappel intensité"},seances:["Début semaine : 1h facile.","Séance rappel : 6 × 1 min vite / 1 min lent.","Course : possibilité de courir fort, mais pas à bloc si fatigue.","Le lendemain : 45 min très facile ou repos.","Renfo léger uniquement."],prioriteCoach:"Course courte secondaire. Elle ne doit pas casser septembre."},
-    {id:12,label:"S12 — Trail des Dolmens",start:"2026-09-07",end:"2026-09-13",phase:3,type:"course préparatoire",kmMin:55,kmMax:62,dpMin:1200,dpMax:1500,objectif:"Trail des Dolmens 15 km — attention à la casse.",course:{name:"Trail des Dolmens",date:"2026-09-13",km:15,dp:370,role:"Rappel intensité"},seances:["1 footing facile.","1 séance courte : 4 × 3 min RPE 6.","Course : allure soutenue contrôlée.","Pas de duel inutile en descente.","Sortie complémentaire : 1h30 facile si récupération bonne."],prioriteCoach:"Deuxième course courte. Contrôle obligatoire si fatigue."},
-    {id:13,label:"S13 — Assimilation post-courses",start:"2026-09-14",end:"2026-09-20",phase:3,type:"récupération",kmMin:55,kmMax:55,dpMin:1000,dpMax:1000,objectif:"Remettre de la fraîcheur avant le gros bloc final.",seances:["3 footings faciles.","1 sortie vallonnée 2h15.","1 renfo complet.","Aucun gros effort."],prioriteCoach:"Rendre le corps disponible pour le bloc TransLantau."},
-    {id:14,label:"S14 — Spécifique TransLantau",start:"2026-09-21",end:"2026-09-27",phase:4,type:"spécifique",kmMin:78,kmMax:78,dpMin:2600,dpMax:2600,objectif:"Apprendre à repartir sur jambes déjà entamées.",seances:["Côtes longues : 3 × 12 min montée RPE 6, récup descente.","Footing 1h facile.","Renfo jambes complet.","Sortie longue : 4h, 1500 D+, bâtons.","Sortie fatigue : 2h facile, 500–700 D+."],prioriteCoach:"Réapprendre à repartir fatigué. C’est le cœur du plan."},
-    {id:15,label:"S15 — Bloc lourd",start:"2026-09-28",end:"2026-10-04",phase:4,type:"charge",kmMin:84,kmMax:84,dpMin:3000,dpMax:3000,objectif:"Bloc lourd. La charge vient du D+.",seances:["Bloc 3 jours — Jour 1 : 1h30 vallonné avec 8 × 3 min montée active.","Jour 2 : 4h à 4h30, 1600–1800 D+.","Jour 3 : 2h rando-course, 600–800 D+.","Footing facile 1h.","Footing 45 min + mobilité.","Pas de séance rapide cette semaine."],prioriteCoach:"Pas de rapide. Du D+, du contrôle, de l’absorption."},
-    {id:16,label:"S16 — Pic spécifique",start:"2026-10-05",end:"2026-10-11",phase:4,type:"pic",kmMin:88,kmMax:92,dpMin:3300,dpMax:3600,objectif:"Valider la capacité à courir/marcher efficacement sur fatigue profonde.",seances:["Séance 1 : 1h20 avec 5 × 8 min montée RPE 6.","Séance 2 : footing 1h facile.","Séance 3 : renfo léger + footing 45 min.","Séance 4 : sortie longue 5h, 1800–2200 D+, bâtons.","Séance 5 : lendemain 2h à 2h30 facile, 700–900 D+.","Si fatigue anormale : réduire à 80 km / 2800 D+."],prioriteCoach:"Semaine clé. Pas à l’ego. Une semaine pic réussie est une semaine absorbée."},
-    {id:17,label:"S17 — Dernier gros bloc",start:"2026-10-12",end:"2026-10-18",phase:4,type:"spécifique",kmMin:76,kmMax:82,dpMin:3000,dpMax:3000,objectif:"Moins de kilomètres, encore du D+.",seances:["Côtes : 10 × 2 min RPE 7.","Footing 1h facile.","Sortie longue : 4h, 1500–1700 D+.","Sortie fatigue : 2h, 600–800 D+.","Renfo léger.","Après cette semaine, ne plus chercher à progresser. Chercher à assimiler."],prioriteCoach:"Dernier gros bloc. Après ça, on assimile."},
-    {id:18,label:"S18 — Début affûtage",start:"2026-10-19",end:"2026-10-25",phase:5,type:"affûtage",kmMin:62,kmMax:62,dpMin:1800,dpMax:1800,objectif:"Début affûtage.",seances:["Une séance rappel : 5 × 4 min montée RPE 6.","Sortie longue : 3h, 900–1100 D+.","Deux footings faciles.","Renfo réduit : 1 séance légère."],prioriteCoach:"Tu ne construis plus. Tu conserves et tu récupères."},
-    {id:19,label:"S19 — Fraîcheur + rappel intensité",start:"2026-10-26",end:"2026-11-01",phase:5,type:"affûtage",kmMin:50,kmMax:50,dpMin:1200,dpMax:1200,objectif:"Fraîcheur + rappel intensité.",seances:["1h facile avec 6 × 20 sec.","4 × 3 min montée RPE 6.","Sortie longue : 2h15, 600 D+.","Footing récupération.","Plus de charge lourde mollets."],prioriteCoach:"La fraîcheur devient prioritaire. Pas de charge lourde mollets."},
-    {id:20,label:"S20 — Affûtage",start:"2026-11-02",end:"2026-11-08",phase:5,type:"affûtage",kmMin:35,kmMax:42,dpMin:600,dpMax:900,objectif:"Affûtage.",seances:["45 min facile.","6 × 1 min dynamique en côte, récup complète.","1h15 vallonné facile.","35–40 min footing.","Mobilité, sommeil, matériel."],prioriteCoach:"Le travail est fait. Le risque maintenant, c’est d’en rajouter."},
-    {id:21,label:"S21 — TransLantau",start:"2026-11-09",end:"2026-11-13",phase:5,type:"race",kmMin:15,kmMax:25,dpMin:0,dpMax:0,dpLabel:"D+ faible non chiffré hors course",objectif:"Semaine course. Course principale le vendredi 13 novembre.",course:{name:"TransLantau",date:"2026-11-13",km:104,dp:4500,role:"Objectif principal"},seances:["Lundi : 40 min facile + 5 × 20 sec.","Mardi : repos ou 30 min très facile.","Mercredi : 25–30 min footing + mobilité.","Jeudi : repos.","Vendredi : course.","Aucune séance de renfo cette semaine."],prioriteCoach:"Arriver frais. Aucun geste inutile. La course est séparée du volume d’affûtage."}
-  ];
+    {
+        "id": 1,
+        "label": "S1 — Reprise structurée + côtes",
+        "start": "2026-06-22",
+        "end": "2026-06-28",
+        "phase": 0,
+        "type": "charge",
+        "kmMin": 58,
+        "kmMax": 58,
+        "dpMin": 1200,
+        "dpMax": 1200,
+        "objectif": "Reprise structurée + côtes. Relancer sans surcharge.",
+        "macroObjectif": "Reprise structurée + côtes",
+        "datesSource": "22–28 juin",
+        "seances": [
+            {
+                "code": "S1",
+                "type": "Côtes courtes",
+                "jour": "",
+                "distance": "10–11 km",
+                "temps": "1h00–1h10",
+                "dp": "220–280 m",
+                "terrain": "Côte régulière 4–8 %, chemin ou route calme",
+                "contenu": "20 min échauffement + 10 × 1 min côte RPE 7, récupération en descente + retour au calme",
+                "rpe": "RPE 7 sur répétitions / 3–4 global",
+                "difficulte": "3",
+                "consignes": "Ne pas sprinter. Monter propre, fréquence haute, buste gainé. Descente en récupération sans casser les quadriceps."
+            },
+            {
+                "code": "S2",
+                "type": "Footing endurance",
+                "jour": "",
+                "distance": "10–11 km",
+                "temps": "1h00",
+                "dp": "80–120 m",
+                "terrain": "Plat à vallonné facile",
+                "contenu": "Footing en endurance facile",
+                "rpe": "RPE 3",
+                "difficulte": "1",
+                "consignes": "Conversation facile. FC seulement en garde-fou."
+            },
+            {
+                "code": "S3",
+                "type": "Footing court + renfo A",
+                "jour": "",
+                "distance": "7–8 km",
+                "temps": "35–45 min + 30–40 min renfo",
+                "dp": "40–80 m",
+                "terrain": "Terrain souple, facile",
+                "contenu": "Footing facile + mollets/soléaires/pied",
+                "rpe": "RPE 2–3",
+                "difficulte": "2",
+                "consignes": "Renfo A : mollets debout lourds 4×8–10, soléaires 4×10–12, excentrique 3×8/jambe, isométrie 3×45 s, pied-cheville 5 min."
+            },
+            {
+                "code": "S4",
+                "type": "Sortie longue vallonnée",
+                "jour": "",
+                "distance": "22–24 km",
+                "temps": "2h30",
+                "dp": "600–700 m",
+                "terrain": "Vallonné trail, sentiers roulants",
+                "contenu": "Sortie longue contrôlée",
+                "rpe": "RPE 3–4",
+                "difficulte": "3",
+                "consignes": "Objectif endurance musculaire, pas chrono. Tester alimentation/hydratation."
+            },
+            {
+                "code": "S5",
+                "type": "Sortie fatigue + lignes droites",
+                "jour": "",
+                "distance": "9–10 km",
+                "temps": "1h15",
+                "dp": "180–250 m",
+                "terrain": "Souple, peu technique",
+                "contenu": "Footing facile avec 6 lignes droites de 15 s",
+                "rpe": "RPE 2–3, lignes droites 6",
+                "difficulte": "2",
+                "consignes": "Lignes droites relâchées, jamais lactiques. Stop si mollets raides."
+            }
+        ],
+        "prioriteCoach": "Objectif source V6 : Reprise structurée + côtes. Relancer sans surcharge.",
+        "sourceNotes": []
+    },
+    {
+        "id": 2,
+        "label": "S2 — Force montée + endurance",
+        "start": "2026-06-29",
+        "end": "2026-07-05",
+        "phase": 0,
+        "type": "charge",
+        "kmMin": 62,
+        "kmMax": 62,
+        "dpMin": 1500,
+        "dpMax": 1500,
+        "objectif": "Force montée + endurance.",
+        "macroObjectif": "Force montée + endurance",
+        "datesSource": "29 juin–5 juil.",
+        "seances": [
+            {
+                "code": "S1",
+                "type": "Côtes longues",
+                "jour": "",
+                "distance": "11–12 km",
+                "temps": "1h15",
+                "dp": "400–500 m",
+                "terrain": "Côte longue régulière, trail ou route",
+                "contenu": "5 × 5 min montée RPE 6, récupération descente",
+                "rpe": "RPE 6",
+                "difficulte": "3",
+                "consignes": "Travail de force contrôlée. Bâtons possibles si pente spécifique."
+            },
+            {
+                "code": "S2",
+                "type": "Footing facile",
+                "jour": "",
+                "distance": "10–11 km",
+                "temps": "1h00",
+                "dp": "80–120 m",
+                "terrain": "Plat/vallonné facile",
+                "contenu": "Endurance facile stricte",
+                "rpe": "RPE 3",
+                "difficulte": "1",
+                "consignes": "Pas de dérive d'intensité après les côtes."
+            },
+            {
+                "code": "S3",
+                "type": "Home trainer ou footing + renfo",
+                "jour": "",
+                "distance": "7–8 km course ou 45 min HT",
+                "temps": "45 min + 30–40 min renfo",
+                "dp": "0–100 m",
+                "terrain": "Footing souple ou home trainer facile",
+                "contenu": "Option principale : footing facile. Option HT si jambes chargées.",
+                "rpe": "RPE 2–3",
+                "difficulte": "2",
+                "consignes": "Garder intensité de récupération. Renfo A mollets/soléaires."
+            },
+            {
+                "code": "S4",
+                "type": "Sortie longue D+",
+                "jour": "",
+                "distance": "24–27 km",
+                "temps": "3h00",
+                "dp": "800–900 m",
+                "terrain": "Trail vallonné, montées régulières",
+                "contenu": "Sortie longue endurance active",
+                "rpe": "RPE 3–4",
+                "difficulte": "3",
+                "consignes": "Marcher tôt dans les pentes raides si plus rentable. Tester bâtons."
+            },
+            {
+                "code": "S5",
+                "type": "Rando-course bâtons",
+                "jour": "",
+                "distance": "10–12 km",
+                "temps": "1h30",
+                "dp": "250–350 m",
+                "terrain": "Sentiers vallonnés",
+                "contenu": "Marche active en montée avec bâtons",
+                "rpe": "RPE 3",
+                "difficulte": "2",
+                "consignes": "Cadence de marche forte, pas de relâchement postural."
+            }
+        ],
+        "prioriteCoach": "Objectif source V6 : Force montée + endurance.",
+        "sourceNotes": []
+    },
+    {
+        "id": 3,
+        "label": "S3 — Premier bloc D+",
+        "start": "2026-07-06",
+        "end": "2026-07-12",
+        "phase": 0,
+        "type": "charge",
+        "kmMin": 66,
+        "kmMax": 66,
+        "dpMin": 1800,
+        "dpMax": 1800,
+        "objectif": "Premier bloc D+.",
+        "macroObjectif": "Premier bloc D+",
+        "datesSource": "6–12 juil.",
+        "seances": [
+            {
+                "code": "S1",
+                "type": "Côtes mixtes",
+                "jour": "",
+                "distance": "12–13 km",
+                "temps": "1h20",
+                "dp": "380–480 m",
+                "terrain": "Côte moyenne + portion plus dynamique",
+                "contenu": "6 × 3 min RPE 7 + 6 × 30 s dynamique",
+                "rpe": "RPE 7",
+                "difficulte": "3",
+                "consignes": "Les 30 s sont dynamiques, pas maximales. Technique propre avant intensité."
+            },
+            {
+                "code": "S2",
+                "type": "Footing facile",
+                "jour": "",
+                "distance": "11–12 km",
+                "temps": "1h10",
+                "dp": "80–150 m",
+                "terrain": "Plat/vallonné facile",
+                "contenu": "Endurance facile",
+                "rpe": "RPE 3",
+                "difficulte": "1",
+                "consignes": "Récupération active. Aucun tempo caché."
+            },
+            {
+                "code": "S3",
+                "type": "Footing + renfo A/B",
+                "jour": "",
+                "distance": "7–8 km",
+                "temps": "45 min + 35–45 min renfo",
+                "dp": "40–80 m",
+                "terrain": "Terrain souple",
+                "contenu": "Footing facile + renfo complet",
+                "rpe": "RPE 2–3",
+                "difficulte": "2",
+                "consignes": "Inclure A + éléments B si fraîcheur : step-down lent, split squat, gainage latéral."
+            },
+            {
+                "code": "S4",
+                "type": "Sortie longue avec descente contrôlée",
+                "jour": "",
+                "distance": "26–28 km",
+                "temps": "3h15–3h30",
+                "dp": "950–1050 m",
+                "terrain": "Trail vallonné avec descente continue",
+                "contenu": "Sortie longue, finir par 20 min de descente contrôlée",
+                "rpe": "RPE 3–4",
+                "difficulte": "3",
+                "consignes": "Descendre relâché, fréquence haute, freinage minimal."
+            },
+            {
+                "code": "S5",
+                "type": "Sortie fatigue facile",
+                "jour": "",
+                "distance": "10–12 km",
+                "temps": "1h30",
+                "dp": "200–300 m",
+                "terrain": "Souple/vallonné",
+                "contenu": "Endurance très facile sur fatigue",
+                "rpe": "RPE 2–3",
+                "difficulte": "2",
+                "consignes": "Vérifier mollets et quadriceps. Si foulée dégradée, réduire."
+            }
+        ],
+        "prioriteCoach": "Objectif source V6 : Premier bloc D+.",
+        "sourceNotes": []
+    },
+    {
+        "id": 4,
+        "label": "S4 — Assimilation",
+        "start": "2026-07-13",
+        "end": "2026-07-19",
+        "phase": 0,
+        "type": "récupération",
+        "kmMin": 50,
+        "kmMax": 50,
+        "dpMin": 900,
+        "dpMax": 900,
+        "objectif": "Absorber la charge.",
+        "macroObjectif": "Assimilation",
+        "datesSource": "13–19 juil.",
+        "seances": [
+            {
+                "code": "S1",
+                "type": "Côtes courtes allégées",
+                "jour": "",
+                "distance": "8–9 km",
+                "temps": "50–60 min",
+                "dp": "180–240 m",
+                "terrain": "Côte courte régulière",
+                "contenu": "8 × 1 min côte, récupération descente",
+                "rpe": "RPE 7 sur fractions / 3 global",
+                "difficulte": "2",
+                "consignes": "Unique qualité de la semaine. Volume contenu."
+            },
+            {
+                "code": "S2",
+                "type": "Footing facile",
+                "jour": "",
+                "distance": "9–10 km",
+                "temps": "55–60 min",
+                "dp": "80–120 m",
+                "terrain": "Facile, terrain souple",
+                "contenu": "Endurance facile",
+                "rpe": "RPE 2–3",
+                "difficulte": "1",
+                "consignes": "Objectif récupération, pas entretien de vitesse."
+            },
+            {
+                "code": "S3",
+                "type": "Footing + renfo réduit",
+                "jour": "",
+                "distance": "6–7 km",
+                "temps": "35–40 min + 25–30 min renfo",
+                "dp": "30–60 m",
+                "terrain": "Souple",
+                "contenu": "Renfo maintenu, charges réduites de 30 %",
+                "rpe": "RPE 2",
+                "difficulte": "1",
+                "consignes": "Pas de courbatures recherchées. Travail propre."
+            },
+            {
+                "code": "S4",
+                "type": "Sortie longue limitée",
+                "jour": "",
+                "distance": "18–20 km",
+                "temps": "2h15",
+                "dp": "450–550 m",
+                "terrain": "Vallonné facile",
+                "contenu": "Sortie longue courte, sans seuil prolongé",
+                "rpe": "RPE 3",
+                "difficulte": "2",
+                "consignes": "Couper si jambes lourdes. Assimilation prioritaire."
+            },
+            {
+                "code": "S5",
+                "type": "Footing récupération",
+                "jour": "",
+                "distance": "7–9 km",
+                "temps": "50–65 min",
+                "dp": "80–140 m",
+                "terrain": "Plat/souple",
+                "contenu": "Footing récupération",
+                "rpe": "RPE 2",
+                "difficulte": "1",
+                "consignes": "Aucune ligne droite obligatoire. Revenir frais."
+            }
+        ],
+        "prioriteCoach": "Objectif source V6 : Absorber la charge.",
+        "sourceNotes": []
+    },
+    {
+        "id": 5,
+        "label": "S5 — Spécifique 6000D",
+        "start": "2026-07-20",
+        "end": "2026-07-26",
+        "phase": 1,
+        "type": "spécifique",
+        "kmMin": 68,
+        "kmMax": 68,
+        "dpMin": 2100,
+        "dpMax": 2100,
+        "objectif": "Spécifique 6000D. Préparer le choc musculaire.",
+        "macroObjectif": "Spécifique 6000D",
+        "datesSource": "20–26 juil.",
+        "seances": [
+            {
+                "code": "S1",
+                "type": "Côtes longues bâtons",
+                "jour": "",
+                "distance": "12–13 km",
+                "temps": "1h20–1h30",
+                "dp": "500–600 m",
+                "terrain": "Côte longue, idéalement trail",
+                "contenu": "4 × 8 min montée RPE 6, bâtons si possible",
+                "rpe": "RPE 6",
+                "difficulte": "3",
+                "consignes": "Rythme contrôlé. Chercher efficacité marche/course en montée."
+            },
+            {
+                "code": "S2",
+                "type": "Footing facile",
+                "jour": "",
+                "distance": "10–11 km",
+                "temps": "1h00",
+                "dp": "80–120 m",
+                "terrain": "Facile",
+                "contenu": "Endurance facile",
+                "rpe": "RPE 3",
+                "difficulte": "1",
+                "consignes": "Aucun ajout d'intensité."
+            },
+            {
+                "code": "S3",
+                "type": "Footing + renfo jambes",
+                "jour": "",
+                "distance": "7–8 km",
+                "temps": "45 min + 40–50 min renfo",
+                "dp": "80–120 m",
+                "terrain": "Souple",
+                "contenu": "Mollets + soléaires + renfo phase 2 allégé",
+                "rpe": "RPE 2–3",
+                "difficulte": "2",
+                "consignes": "Inclure step-down lent et split squat. Stop si tendon d'Achille sensible."
+            },
+            {
+                "code": "S4",
+                "type": "Sortie longue spécifique",
+                "jour": "",
+                "distance": "29–32 km",
+                "temps": "3h45–4h00",
+                "dp": "1200–1400 m",
+                "terrain": "Trail vallonné, D+ concentré",
+                "contenu": "Sortie longue très maîtrisée",
+                "rpe": "RPE 3–4",
+                "difficulte": "4",
+                "consignes": "Allure volontairement retenue. Tester nutrition, bâtons, descentes propres."
+            },
+            {
+                "code": "S5",
+                "type": "Sortie fatigue terrain souple",
+                "jour": "",
+                "distance": "8–10 km",
+                "temps": "1h15",
+                "dp": "150–250 m",
+                "terrain": "Terrain souple",
+                "contenu": "Footing très facile sur fatigue",
+                "rpe": "RPE 2–3",
+                "difficulte": "2",
+                "consignes": "Aucune intensité. Faire circuler, pas charger."
+            }
+        ],
+        "prioriteCoach": "Objectif source V6 : Spécifique 6000D. Préparer le choc musculaire.",
+        "sourceNotes": []
+    },
+    {
+        "id": 6,
+        "label": "S6 — 6000D 42 km / 2100 m",
+        "start": "2026-07-27",
+        "end": "2026-08-02",
+        "phase": 1,
+        "type": "course préparatoire",
+        "kmMin": 65,
+        "kmMax": 75,
+        "dpMin": 2500,
+        "dpMax": 3000,
+        "objectif": "6000D (01/08) — Course test, pas objectif maximal.",
+        "macroObjectif": "6000D 42 km / 2100 m",
+        "datesSource": "27 juil.–2 août",
+        "seances": [
+            {
+                "code": "S1",
+                "type": "J-5/J-4 activation",
+                "jour": "",
+                "distance": "7–8 km",
+                "temps": "45 min",
+                "dp": "60–100 m",
+                "terrain": "Facile + 6 accélérations",
+                "contenu": "45 min facile + 6 × 20 s",
+                "rpe": "RPE 3, accélérations 6",
+                "difficulte": "2",
+                "consignes": "Activation uniquement. Garder de la fraîcheur."
+            },
+            {
+                "code": "S2",
+                "type": "J-3 option très facile",
+                "jour": "",
+                "distance": "0–5 km",
+                "temps": "Repos ou 30 min",
+                "dp": "0–50 m",
+                "terrain": "Plat/souple",
+                "contenu": "Repos ou 30 min très facile",
+                "rpe": "RPE 1–2",
+                "difficulte": "1",
+                "consignes": "Choisir repos si mollets/quadriceps chargés."
+            },
+            {
+                "code": "S3",
+                "type": "J-1 déverrouillage",
+                "jour": "",
+                "distance": "3–4 km",
+                "temps": "20–25 min + mobilité",
+                "dp": "0–30 m",
+                "terrain": "Plat facile",
+                "contenu": "Footing court + mobilité",
+                "rpe": "RPE 2",
+                "difficulte": "1",
+                "consignes": "Aucune tension. Préparer matériel/nutrition."
+            },
+            {
+                "code": "S4",
+                "type": "Course 6000D",
+                "jour": "",
+                "distance": "42 km",
+                "temps": "Chrono non fixé",
+                "dp": "2100 m",
+                "terrain": "Trail montagne, longues montées/descentes",
+                "contenu": "Départ contrôlé, RPE 4–5 max sur premières longues montées",
+                "rpe": "RPE 4–5 début, 6–7 possible fin",
+                "difficulte": "4",
+                "consignes": "Marcher si plus rentable. Descente propre, relâchée, pas agressive au début. Objectif : finir avec tenue musculaire."
+            },
+            {
+                "code": "S5",
+                "type": "Après course",
+                "jour": "",
+                "distance": "0–3 km marche",
+                "temps": "20–40 min marche ou off",
+                "dp": "0–100 m",
+                "terrain": "Marche très facile",
+                "contenu": "2 jours off ou marche. Pas de séance dure pendant 7 jours.",
+                "rpe": "RPE 1",
+                "difficulte": "1",
+                "consignes": "Ne pas forcer le volume si la récupération impose moins."
+            }
+        ],
+        "prioriteCoach": "Objectif source V6 : 6000D (01/08) — Course test, pas objectif maximal.",
+        "sourceNotes": [],
+        "course": {
+            "name": "6000D",
+            "date": "2026-08-01",
+            "km": 42,
+            "dp": 2100,
+            "role": "Test spécifique principal — pas objectif maximal"
+        }
+    },
+    {
+        "id": 7,
+        "label": "S7 — Récupération réelle",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "phase": 1,
+        "type": "récupération",
+        "kmMin": 35,
+        "kmMax": 45,
+        "dpMin": 500,
+        "dpMax": 800,
+        "objectif": "Récupérer après la 6000D. Critère de reprise : jambes normales en descente.",
+        "macroObjectif": "Récupération réelle",
+        "datesSource": "3–9 août",
+        "seances": [
+            {
+                "code": "S1",
+                "type": "Footing très facile",
+                "jour": "",
+                "distance": "6–8 km",
+                "temps": "40–50 min",
+                "dp": "0–80 m",
+                "terrain": "Plat/souple",
+                "contenu": "Footing très facile",
+                "rpe": "RPE 2",
+                "difficulte": "1",
+                "consignes": "Reprendre seulement si jambes normales en descente."
+            },
+            {
+                "code": "S2",
+                "type": "Vélo ou home trainer facile",
+                "jour": "",
+                "distance": "—",
+                "temps": "45–60 min",
+                "dp": "0 m course",
+                "terrain": "Home trainer ou vélo",
+                "contenu": "Endurance facile sans impact",
+                "rpe": "RPE 2",
+                "difficulte": "1",
+                "consignes": "Intensité de récupération uniquement."
+            },
+            {
+                "code": "S3",
+                "type": "Footing très facile",
+                "jour": "",
+                "distance": "6–8 km",
+                "temps": "40–50 min",
+                "dp": "0–80 m",
+                "terrain": "Plat/souple",
+                "contenu": "Deuxième footing très facile",
+                "rpe": "RPE 2",
+                "difficulte": "1",
+                "consignes": "Si mollets lourds, remplacer par vélo."
+            },
+            {
+                "code": "S4",
+                "type": "Sortie vallonnée conditionnelle",
+                "jour": "",
+                "distance": "12–15 km",
+                "temps": "1h30",
+                "dp": "300–500 m",
+                "terrain": "Vallonné facile",
+                "contenu": "Sortie vallonnée seulement si jambes OK",
+                "rpe": "RPE 2–3",
+                "difficulte": "2",
+                "consignes": "Critère strict : descente normale. Sinon réduire ou supprimer."
+            },
+            {
+                "code": "S5",
+                "type": "Renfo léger + mobilité",
+                "jour": "",
+                "distance": "5–8 km optionnels",
+                "temps": "35–45 min footing optionnel + mobilité",
+                "dp": "0–100 m",
+                "terrain": "Souple",
+                "contenu": "Gainage, mobilité, mollets sans charge lourde",
+                "rpe": "RPE 1–2",
+                "difficulte": "1",
+                "consignes": "Pas de charge lourde. Semaine de récupération, pas de performance."
+            }
+        ],
+        "prioriteCoach": "Objectif source V6 : Récupérer après la 6000D. Critère de reprise : jambes normales en descente.",
+        "sourceNotes": []
+    },
+    {
+        "id": 8,
+        "label": "S8 — Rebuild propre",
+        "start": "2026-08-10",
+        "end": "2026-08-16",
+        "phase": 2,
+        "type": "charge",
+        "kmMin": 65,
+        "kmMax": 65,
+        "dpMin": 1700,
+        "dpMax": 1700,
+        "objectif": "Rebuild propre.",
+        "macroObjectif": "Rebuild propre",
+        "datesSource": "10–16 août",
+        "seances": [
+            {
+                "code": "S1",
+                "type": "Côtes moyennes",
+                "jour": "",
+                "distance": "11–12 km",
+                "temps": "1h10–1h20",
+                "dp": "350–450 m",
+                "terrain": "Côte moyenne trail",
+                "contenu": "6 × 4 min RPE 6–7",
+                "rpe": "RPE 6–7",
+                "difficulte": "3",
+                "consignes": "Reprise qualité contrôlée après récupération."
+            },
+            {
+                "code": "S2",
+                "type": "Footing facile",
+                "jour": "",
+                "distance": "10–11 km",
+                "temps": "1h00",
+                "dp": "80–120 m",
+                "terrain": "Facile",
+                "contenu": "Footing endurance",
+                "rpe": "RPE 3",
+                "difficulte": "1",
+                "consignes": "Laisser redescendre la charge."
+            },
+            {
+                "code": "S3",
+                "type": "Renfo complet + footing",
+                "jour": "",
+                "distance": "7–9 km",
+                "temps": "45 min + 40–50 min renfo",
+                "dp": "80–120 m",
+                "terrain": "Souple",
+                "contenu": "Renfo A + B complet",
+                "rpe": "RPE 2–3",
+                "difficulte": "2",
+                "consignes": "Priorité mollets/soléaires et step-down lent."
+            },
+            {
+                "code": "S4",
+                "type": "Sortie longue D+",
+                "jour": "",
+                "distance": "25–27 km",
+                "temps": "3h15",
+                "dp": "900–1000 m",
+                "terrain": "Trail vallonné",
+                "contenu": "Sortie longue contrôlée",
+                "rpe": "RPE 3–4",
+                "difficulte": "3",
+                "consignes": "Pas d'allure course. Monter efficace, descendre propre."
+            },
+            {
+                "code": "S5",
+                "type": "Sortie fatigue rando-course",
+                "jour": "",
+                "distance": "11–13 km",
+                "temps": "1h30",
+                "dp": "200–300 m",
+                "terrain": "Vallonné facile",
+                "contenu": "Rando-course avec marche active en montée",
+                "rpe": "RPE 3",
+                "difficulte": "2",
+                "consignes": "Travail de rendement, pas de vitesse."
+            }
+        ],
+        "prioriteCoach": "Objectif source V6 : Rebuild propre.",
+        "sourceNotes": []
+    },
+    {
+        "id": 9,
+        "label": "S9 — Bloc endurance musculaire",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "phase": 2,
+        "type": "spécifique",
+        "kmMin": 72,
+        "kmMax": 72,
+        "dpMin": 2200,
+        "dpMax": 2200,
+        "objectif": "Bloc endurance musculaire sur 2 jours successifs.",
+        "macroObjectif": "Bloc endurance musculaire",
+        "datesSource": "17–23 août",
+        "seances": [
+            {
+                "code": "S1",
+                "type": "Footing facile",
+                "jour": "",
+                "distance": "10–11 km",
+                "temps": "1h00",
+                "dp": "80–120 m",
+                "terrain": "Facile",
+                "contenu": "Footing endurance facile",
+                "rpe": "RPE 3",
+                "difficulte": "1",
+                "consignes": "À placer loin du bloc si possible."
+            },
+            {
+                "code": "S2",
+                "type": "Footing + renfo",
+                "jour": "",
+                "distance": "7–8 km",
+                "temps": "45 min + 40 min renfo",
+                "dp": "40–80 m",
+                "terrain": "Souple",
+                "contenu": "Footing facile + renfo A/B",
+                "rpe": "RPE 2–3",
+                "difficulte": "2",
+                "consignes": "Pas d'échec musculaire. Qualité d'exécution."
+            },
+            {
+                "code": "S3",
+                "type": "Jour A — sortie longue",
+                "jour": "",
+                "distance": "30–33 km",
+                "temps": "4h00",
+                "dp": "1300–1500 m",
+                "terrain": "Trail vallonné/montagneux",
+                "contenu": "Sortie longue 4h, 1300–1500 D+, RPE 3–4",
+                "rpe": "RPE 3–4",
+                "difficulte": "4",
+                "consignes": "Premier jour du bloc. Objectif durabilité musculaire, pas performance."
+            },
+            {
+                "code": "S4",
+                "type": "Jour B — côtes courtes en légère fatigue",
+                "jour": "",
+                "distance": "13–15 km",
+                "temps": "1h30",
+                "dp": "400–500 m",
+                "terrain": "Vallonné avec côte répétable",
+                "contenu": "8 × 2 min côte RPE 7 en légère fatigue",
+                "rpe": "RPE 7",
+                "difficulte": "3",
+                "consignes": "Deuxième jour du bloc. Garder une exécution propre malgré la fatigue."
+            },
+            {
+                "code": "S5",
+                "type": "Sortie récupération",
+                "jour": "",
+                "distance": "8–10 km",
+                "temps": "1h00",
+                "dp": "80–120 m",
+                "terrain": "Plat/souple",
+                "contenu": "Footing récupération",
+                "rpe": "RPE 2",
+                "difficulte": "1",
+                "consignes": "Si descente dégradée, raccourcir."
+            }
+        ],
+        "prioriteCoach": "Objectif source V6 : Bloc endurance musculaire sur 2 jours successifs.",
+        "sourceNotes": []
+    },
+    {
+        "id": 10,
+        "label": "S10 — Bloc spécifique ultra",
+        "start": "2026-08-24",
+        "end": "2026-08-30",
+        "phase": 2,
+        "type": "spécifique",
+        "kmMin": 76,
+        "kmMax": 76,
+        "dpMin": 2500,
+        "dpMax": 2500,
+        "objectif": "Bloc spécifique ultra. Simuler la fatigue TransLantau.",
+        "macroObjectif": "Bloc spécifique ultra",
+        "datesSource": "24–30 août",
+        "seances": [
+            {
+                "code": "S1",
+                "type": "Footing facile",
+                "jour": "",
+                "distance": "10–11 km",
+                "temps": "1h00",
+                "dp": "80–120 m",
+                "terrain": "Facile",
+                "contenu": "Endurance facile",
+                "rpe": "RPE 3",
+                "difficulte": "1",
+                "consignes": "Préparer le bloc sans fatigue inutile."
+            },
+            {
+                "code": "S2",
+                "type": "Footing + renfo",
+                "jour": "",
+                "distance": "7–9 km",
+                "temps": "45–50 min + 35–45 min renfo",
+                "dp": "80–120 m",
+                "terrain": "Souple",
+                "contenu": "Renfo A/B, charges maîtrisées",
+                "rpe": "RPE 2–3",
+                "difficulte": "2",
+                "consignes": "Surveiller mollets/Achille."
+            },
+            {
+                "code": "S3",
+                "type": "Bloc J1 — sortie longue",
+                "jour": "",
+                "distance": "28–32 km",
+                "temps": "3h30–4h00",
+                "dp": "1400 m",
+                "terrain": "Trail vallonné, bâtons",
+                "contenu": "3h30–4h vallonné, 1400 D+, bâtons",
+                "rpe": "RPE 3–4",
+                "difficulte": "4",
+                "consignes": "Nutrition/hydratation obligatoires. Descente relâchée."
+            },
+            {
+                "code": "S4",
+                "type": "Bloc J2 — montées tempo sur jambes lourdes",
+                "jour": "",
+                "distance": "12–13 km",
+                "temps": "1h15",
+                "dp": "450–550 m",
+                "terrain": "Côte longue/vallonné",
+                "contenu": "5 × 6 min montée RPE 6 sur jambes lourdes",
+                "rpe": "RPE 6",
+                "difficulte": "3",
+                "consignes": "Contrôlé. Ne pas transformer en seuil dur."
+            },
+            {
+                "code": "S5",
+                "type": "Bloc J3 — fatigue",
+                "jour": "",
+                "distance": "15–18 km",
+                "temps": "1h45",
+                "dp": "350–500 m",
+                "terrain": "Vallonné facile",
+                "contenu": "Très facile avec marche active en montée",
+                "rpe": "RPE 2–3",
+                "difficulte": "3",
+                "consignes": "Si les mollets tirent, enlever cette séance."
+            }
+        ],
+        "prioriteCoach": "Objectif source V6 : Bloc spécifique ultra. Simuler la fatigue TransLantau.",
+        "sourceNotes": []
+    },
+    {
+        "id": 11,
+        "label": "S11 — Luzi'trail 16 km",
+        "start": "2026-08-31",
+        "end": "2026-09-06",
+        "phase": 3,
+        "type": "course préparatoire",
+        "kmMin": 58,
+        "kmMax": 65,
+        "dpMin": 1300,
+        "dpMax": 1600,
+        "objectif": "Luzi'trail 16 km (06/09). Rappel intensité, pas objectif principal.",
+        "macroObjectif": "Luzi'trail 16 km",
+        "datesSource": "31 août–6 sept.",
+        "seances": [
+            {
+                "code": "S1",
+                "type": "Début semaine facile",
+                "jour": "",
+                "distance": "10–12 km",
+                "temps": "1h00",
+                "dp": "100–150 m",
+                "terrain": "Facile",
+                "contenu": "Footing facile",
+                "rpe": "RPE 3",
+                "difficulte": "1",
+                "consignes": "Ne pas créer de fatigue résiduelle."
+            },
+            {
+                "code": "S2",
+                "type": "Séance rappel vite/lent",
+                "jour": "",
+                "distance": "8–10 km",
+                "temps": "45–55 min",
+                "dp": "80–150 m",
+                "terrain": "Plat ou faux plat",
+                "contenu": "6 × 1 min vite / 1 min lent",
+                "rpe": "RPE 7 sur vite",
+                "difficulte": "2",
+                "consignes": "Rappel neuromusculaire. Récupération complète."
+            },
+            {
+                "code": "S3",
+                "type": "Footing vallonné + renfo léger",
+                "jour": "",
+                "distance": "12–14 km",
+                "temps": "1h15–1h25 + 20–30 min renfo",
+                "dp": "300–450 m",
+                "terrain": "Vallonné facile",
+                "contenu": "Footing facile + renfo léger uniquement",
+                "rpe": "RPE 3",
+                "difficulte": "2",
+                "consignes": "Renfo sans charges lourdes. Garder de la fraîcheur pour la course."
+            },
+            {
+                "code": "S4",
+                "type": "Luzi'trail",
+                "jour": "",
+                "distance": "16 km",
+                "temps": "Chrono non prioritaire",
+                "dp": "410 m",
+                "terrain": "Trail court vallonné",
+                "contenu": "Course possible forte, pas à bloc si fatigue",
+                "rpe": "RPE 7–8 si frais",
+                "difficulte": "4",
+                "consignes": "Pas de casse musculaire pour une course secondaire. Descente propre."
+            },
+            {
+                "code": "S5",
+                "type": "Lendemain très facile",
+                "jour": "",
+                "distance": "0–8 km",
+                "temps": "Repos ou 45 min",
+                "dp": "0–100 m",
+                "terrain": "Plat/souple",
+                "contenu": "45 min très facile ou repos",
+                "rpe": "RPE 1–2",
+                "difficulte": "1",
+                "consignes": "Choisir repos si mollets/quadriceps raides."
+            }
+        ],
+        "prioriteCoach": "Objectif source V6 : Luzi'trail 16 km (06/09). Rappel intensité, pas objectif principal.",
+        "sourceNotes": [],
+        "course": {
+            "name": "Luzi'trail",
+            "date": "2026-09-06",
+            "km": 16,
+            "dp": 410,
+            "role": "Rappel intensité — course courte secondaire"
+        }
+    },
+    {
+        "id": 12,
+        "label": "S12 — Trail des Dolmens 15 km",
+        "start": "2026-09-07",
+        "end": "2026-09-13",
+        "phase": 3,
+        "type": "course préparatoire",
+        "kmMin": 55,
+        "kmMax": 62,
+        "dpMin": 1200,
+        "dpMax": 1500,
+        "objectif": "Trail des Dolmens 15 km (13/09). Deuxième course courte — attention au cumul avec Luzi'trail.",
+        "macroObjectif": "Trail des Dolmens 15 km",
+        "datesSource": "7–13 sept.",
+        "seances": [
+            {
+                "code": "S1",
+                "type": "Footing facile",
+                "jour": "",
+                "distance": "10–12 km",
+                "temps": "1h00",
+                "dp": "80–150 m",
+                "terrain": "Facile",
+                "contenu": "Footing facile",
+                "rpe": "RPE 3",
+                "difficulte": "1",
+                "consignes": "Contrôler la récupération de Luzi'trail."
+            },
+            {
+                "code": "S2",
+                "type": "Séance courte montée",
+                "jour": "",
+                "distance": "10–11 km",
+                "temps": "55–65 min",
+                "dp": "220–300 m",
+                "terrain": "Côte modérée",
+                "contenu": "4 × 3 min RPE 6",
+                "rpe": "RPE 6",
+                "difficulte": "2",
+                "consignes": "Rappel contrôlé, pas de duel avec soi-même."
+            },
+            {
+                "code": "S3",
+                "type": "Footing + renfo léger",
+                "jour": "",
+                "distance": "8–10 km",
+                "temps": "45–55 min + 20–30 min renfo",
+                "dp": "100–180 m",
+                "terrain": "Souple",
+                "contenu": "Renfo léger uniquement",
+                "rpe": "RPE 2–3",
+                "difficulte": "1",
+                "consignes": "Aucune charge lourde. Garder tonus, pas fatigue."
+            },
+            {
+                "code": "S4",
+                "type": "Trail des Dolmens",
+                "jour": "",
+                "distance": "15 km",
+                "temps": "Chrono non prioritaire",
+                "dp": "370 m",
+                "terrain": "Trail court vallonné",
+                "contenu": "Allure soutenue contrôlée",
+                "rpe": "RPE 6–7",
+                "difficulte": "4",
+                "consignes": "Pas de duel inutile en descente. Si fatigue de S11 : courir en contrôle."
+            },
+            {
+                "code": "S5",
+                "type": "Sortie complémentaire facile",
+                "jour": "",
+                "distance": "12–15 km",
+                "temps": "1h30",
+                "dp": "350–500 m",
+                "terrain": "Vallonné facile",
+                "contenu": "Sortie complémentaire si récupération bonne",
+                "rpe": "RPE 2–3",
+                "difficulte": "2",
+                "consignes": "Supprimer ou raccourcir si douleurs ou jambes lourdes."
+            }
+        ],
+        "prioriteCoach": "Objectif source V6 : Trail des Dolmens 15 km (13/09). Deuxième course courte — attention au cumul avec Luzi'trail.",
+        "sourceNotes": [],
+        "course": {
+            "name": "Trail des Dolmens",
+            "date": "2026-09-13",
+            "km": 15,
+            "dp": 370,
+            "role": "Rappel intensité — attention cumul avec Luzi'trail"
+        }
+    },
+    {
+        "id": 13,
+        "label": "S13 — Assimilation post-courses",
+        "start": "2026-09-14",
+        "end": "2026-09-20",
+        "phase": 3,
+        "type": "récupération",
+        "kmMin": 55,
+        "kmMax": 55,
+        "dpMin": 1000,
+        "dpMax": 1000,
+        "objectif": "Remettre de la fraîcheur avant le gros bloc final.",
+        "macroObjectif": "Assimilation post-courses",
+        "datesSource": "14–20 sept.",
+        "seances": [
+            {
+                "code": "S1",
+                "type": "Footing facile 1",
+                "jour": "",
+                "distance": "10–11 km",
+                "temps": "1h00",
+                "dp": "80–120 m",
+                "terrain": "Facile",
+                "contenu": "Footing facile",
+                "rpe": "RPE 2–3",
+                "difficulte": "1",
+                "consignes": "Aucun gros effort."
+            },
+            {
+                "code": "S2",
+                "type": "Footing facile 2",
+                "jour": "",
+                "distance": "9–10 km",
+                "temps": "50–60 min",
+                "dp": "80–120 m",
+                "terrain": "Facile",
+                "contenu": "Footing facile",
+                "rpe": "RPE 2–3",
+                "difficulte": "1",
+                "consignes": "Sortir plus frais qu'au départ."
+            },
+            {
+                "code": "S3",
+                "type": "Renfo complet + footing",
+                "jour": "",
+                "distance": "7–8 km",
+                "temps": "45 min + 40–50 min renfo",
+                "dp": "40–80 m",
+                "terrain": "Souple",
+                "contenu": "Renfo complet A/B",
+                "rpe": "RPE 2–3",
+                "difficulte": "2",
+                "consignes": "Dernière phase utile de renfo structuré avant gros bloc."
+            },
+            {
+                "code": "S4",
+                "type": "Sortie vallonnée",
+                "jour": "",
+                "distance": "21–23 km",
+                "temps": "2h15",
+                "dp": "550–650 m",
+                "terrain": "Vallonné facile",
+                "contenu": "Sortie vallonnée contrôlée",
+                "rpe": "RPE 3",
+                "difficulte": "2",
+                "consignes": "Pas de seuil, pas de descente agressive."
+            },
+            {
+                "code": "S5",
+                "type": "Footing facile 3",
+                "jour": "",
+                "distance": "8–10 km",
+                "temps": "50–60 min",
+                "dp": "100–150 m",
+                "terrain": "Souple/vallonné léger",
+                "contenu": "Footing facile",
+                "rpe": "RPE 2",
+                "difficulte": "1",
+                "consignes": "Objectif fraîcheur."
+            }
+        ],
+        "prioriteCoach": "Objectif source V6 : Remettre de la fraîcheur avant le gros bloc final.",
+        "sourceNotes": []
+    },
+    {
+        "id": 14,
+        "label": "S14 — Spécifique TransLantau",
+        "start": "2026-09-21",
+        "end": "2026-09-27",
+        "phase": 4,
+        "type": "spécifique",
+        "kmMin": 78,
+        "kmMax": 78,
+        "dpMin": 2600,
+        "dpMax": 2600,
+        "objectif": "Spécifique TransLantau. Apprendre à repartir sur jambes déjà entamées.",
+        "macroObjectif": "Spécifique TransLantau",
+        "datesSource": "21–27 sept.",
+        "seances": [
+            {
+                "code": "S1",
+                "type": "Côtes longues",
+                "jour": "",
+                "distance": "13–15 km",
+                "temps": "1h25–1h35",
+                "dp": "550–650 m",
+                "terrain": "Côte longue trail",
+                "contenu": "3 × 12 min montée RPE 6, récupération descente",
+                "rpe": "RPE 6",
+                "difficulte": "3",
+                "consignes": "Montée efficace, descente propre. Bâtons possibles."
+            },
+            {
+                "code": "S2",
+                "type": "Footing facile",
+                "jour": "",
+                "distance": "10–11 km",
+                "temps": "1h00",
+                "dp": "80–120 m",
+                "terrain": "Facile",
+                "contenu": "Footing facile",
+                "rpe": "RPE 3",
+                "difficulte": "1",
+                "consignes": "Aucune intensité."
+            },
+            {
+                "code": "S3",
+                "type": "Renfo jambes complet + footing",
+                "jour": "",
+                "distance": "7–9 km",
+                "temps": "45 min + 40–50 min renfo",
+                "dp": "80–120 m",
+                "terrain": "Souple",
+                "contenu": "Renfo jambes complet",
+                "rpe": "RPE 2–3",
+                "difficulte": "2",
+                "consignes": "Mollets/soléaires/quadriceps. Pas d'échec."
+            },
+            {
+                "code": "S4",
+                "type": "Sortie longue bâtons",
+                "jour": "",
+                "distance": "32–35 km",
+                "temps": "4h00",
+                "dp": "1450–1550 m",
+                "terrain": "Trail vallonné/montagneux",
+                "contenu": "Sortie longue 1500 D+ avec bâtons",
+                "rpe": "RPE 3–4",
+                "difficulte": "4",
+                "consignes": "Nutrition complète. Économie en montée. Descente en fatigue contrôlée."
+            },
+            {
+                "code": "S5",
+                "type": "Sortie fatigue",
+                "jour": "",
+                "distance": "15–18 km",
+                "temps": "2h00",
+                "dp": "500–700 m",
+                "terrain": "Vallonné facile",
+                "contenu": "Sortie facile sur jambes entamées",
+                "rpe": "RPE 2–3",
+                "difficulte": "3",
+                "consignes": "Objectif repartir proprement, pas forcer."
+            }
+        ],
+        "prioriteCoach": "Objectif source V6 : Spécifique TransLantau. Apprendre à repartir sur jambes déjà entamées.",
+        "sourceNotes": [
+            "Organisation impérative : Renfo B en lundi ou mardi. Sortie longue en jeudi ou vendredi. Respecter 48h minimum entre les deux."
+        ]
+    },
+    {
+        "id": 15,
+        "label": "S15 — Bloc lourd",
+        "start": "2026-09-28",
+        "end": "2026-10-04",
+        "phase": 4,
+        "type": "charge",
+        "kmMin": 84,
+        "kmMax": 84,
+        "dpMin": 3000,
+        "dpMax": 3000,
+        "objectif": "Bloc lourd. La charge vient du D+, pas de la vitesse.",
+        "macroObjectif": "Bloc lourd",
+        "datesSource": "28 sept.–4 oct.",
+        "seances": [
+            {
+                "code": "S1",
+                "type": "Footing facile",
+                "jour": "",
+                "distance": "10–11 km",
+                "temps": "1h00",
+                "dp": "80–120 m",
+                "terrain": "Facile",
+                "contenu": "Footing facile",
+                "rpe": "RPE 3",
+                "difficulte": "1",
+                "consignes": "Garder de la fraîcheur avant le bloc 3 jours."
+            },
+            {
+                "code": "S2",
+                "type": "Footing + mobilité",
+                "jour": "",
+                "distance": "7–8 km",
+                "temps": "45 min + mobilité",
+                "dp": "40–80 m",
+                "terrain": "Souple",
+                "contenu": "Footing facile + mobilité",
+                "rpe": "RPE 2",
+                "difficulte": "1",
+                "consignes": "Pas de séance rapide cette semaine."
+            },
+            {
+                "code": "S3",
+                "type": "Bloc J1 — vallonné actif",
+                "jour": "",
+                "distance": "14–15 km",
+                "temps": "1h30",
+                "dp": "500–650 m",
+                "terrain": "Vallonné trail",
+                "contenu": "8 × 3 min montée active",
+                "rpe": "RPE 5–6",
+                "difficulte": "3",
+                "consignes": "Montées actives, pas lactiques. Garder de la marge."
+            },
+            {
+                "code": "S4",
+                "type": "Bloc J2 — sortie longue lourde",
+                "jour": "",
+                "distance": "33–36 km",
+                "temps": "4h00–4h30",
+                "dp": "1600–1800 m",
+                "terrain": "Trail vallonné/montagneux",
+                "contenu": "Sortie longue spécifique",
+                "rpe": "RPE 3–4",
+                "difficulte": "4",
+                "consignes": "Grosse séance de la semaine. Bâtons, nutrition, gestion descentes."
+            },
+            {
+                "code": "S5",
+                "type": "Bloc J3 — rando-course",
+                "jour": "",
+                "distance": "18–20 km",
+                "temps": "2h00",
+                "dp": "600–800 m",
+                "terrain": "Rando-course vallonnée",
+                "contenu": "Rando-course facile",
+                "rpe": "RPE 2–3",
+                "difficulte": "4",
+                "consignes": "Dur par accumulation. Pas d'ego, pas d'allure imposée."
+            }
+        ],
+        "prioriteCoach": "Objectif source V6 : Bloc lourd. La charge vient du D+, pas de la vitesse.",
+        "sourceNotes": []
+    },
+    {
+        "id": 16,
+        "label": "S16 — Pic spécifique",
+        "start": "2026-10-05",
+        "end": "2026-10-11",
+        "phase": 4,
+        "type": "pic",
+        "kmMin": 88,
+        "kmMax": 92,
+        "dpMin": 3300,
+        "dpMax": 3600,
+        "objectif": "Semaine pic spécifique. Valider la capacité à courir/marcher efficacement sur fatigue profonde.",
+        "macroObjectif": "Pic spécifique",
+        "datesSource": "5–11 oct.",
+        "seances": [
+            {
+                "code": "S1",
+                "type": "Montées longues",
+                "jour": "",
+                "distance": "14–15 km",
+                "temps": "1h20",
+                "dp": "650–750 m",
+                "terrain": "Côte longue trail",
+                "contenu": "5 × 8 min montée RPE 6",
+                "rpe": "RPE 6",
+                "difficulte": "3",
+                "consignes": "Semaine clé. Contrôle absolu, pas de sur-régime."
+            },
+            {
+                "code": "S2",
+                "type": "Footing facile",
+                "jour": "",
+                "distance": "10–12 km",
+                "temps": "1h00",
+                "dp": "80–120 m",
+                "terrain": "Facile",
+                "contenu": "Footing facile",
+                "rpe": "RPE 3",
+                "difficulte": "1",
+                "consignes": "Récupération active."
+            },
+            {
+                "code": "S3",
+                "type": "Renfo léger + footing",
+                "jour": "",
+                "distance": "7–8 km",
+                "temps": "45 min + 20–30 min renfo léger",
+                "dp": "40–80 m",
+                "terrain": "Souple",
+                "contenu": "Renfo léger + footing",
+                "rpe": "RPE 2",
+                "difficulte": "2",
+                "consignes": "Pas de charge lourde. Activation uniquement."
+            },
+            {
+                "code": "S4",
+                "type": "Sortie longue 5h",
+                "jour": "",
+                "distance": "38–42 km",
+                "temps": "5h00",
+                "dp": "1800–2200 m",
+                "terrain": "Trail montagneux/vallonné, bâtons",
+                "contenu": "Sortie longue spécifique pic",
+                "rpe": "RPE 3–4",
+                "difficulte": "4",
+                "consignes": "Nutrition comme course."
+            },
+            {
+                "code": "S5",
+                "type": "Lendemain fatigue profonde",
+                "jour": "",
+                "distance": "20–22 km",
+                "temps": "2h00–2h30",
+                "dp": "700–900 m",
+                "terrain": "Vallonné facile",
+                "contenu": "Sortie facile le lendemain",
+                "rpe": "RPE 2–3",
+                "difficulte": "4",
+                "consignes": "Objectif durabilité. Si fatigue anormale : réduire à 80 km / 2800 D+."
+            }
+        ],
+        "prioriteCoach": "Objectif source V6 : Semaine pic spécifique. Valider la capacité à courir/marcher efficacement sur fatigue profonde.",
+        "sourceNotes": []
+    },
+    {
+        "id": 17,
+        "label": "S17 — Dernier gros bloc",
+        "start": "2026-10-12",
+        "end": "2026-10-18",
+        "phase": 4,
+        "type": "spécifique",
+        "kmMin": 76,
+        "kmMax": 82,
+        "dpMin": 3000,
+        "dpMax": 3000,
+        "objectif": "Dernier gros bloc. Moins de kilomètres, encore du D+. Après cette semaine : assimiler seulement.",
+        "macroObjectif": "Dernier gros bloc",
+        "datesSource": "12–18 oct.",
+        "seances": [
+            {
+                "code": "S1",
+                "type": "Côtes courtes dures",
+                "jour": "",
+                "distance": "12–14 km",
+                "temps": "1h10–1h20",
+                "dp": "450–550 m",
+                "terrain": "Côte courte/moyenne",
+                "contenu": "10 × 2 min côte RPE 7",
+                "rpe": "RPE 7",
+                "difficulte": "3",
+                "consignes": "Dernier rappel dur. Exécution propre, récupération descente."
+            },
+            {
+                "code": "S2",
+                "type": "Footing facile",
+                "jour": "",
+                "distance": "10–11 km",
+                "temps": "1h00",
+                "dp": "80–120 m",
+                "terrain": "Facile",
+                "contenu": "Footing facile",
+                "rpe": "RPE 3",
+                "difficulte": "1",
+                "consignes": "Aucune dette."
+            },
+            {
+                "code": "S3",
+                "type": "Renfo léger + footing",
+                "jour": "",
+                "distance": "7–8 km",
+                "temps": "45 min + 20–30 min renfo léger",
+                "dp": "80–120 m",
+                "terrain": "Souple",
+                "contenu": "Renfo léger",
+                "rpe": "RPE 2",
+                "difficulte": "1",
+                "consignes": "Ne plus chercher à progresser en force."
+            },
+            {
+                "code": "S4",
+                "type": "Sortie longue D+",
+                "jour": "",
+                "distance": "30–33 km",
+                "temps": "4h00",
+                "dp": "1500–1700 m",
+                "terrain": "Trail vallonné/montagneux",
+                "contenu": "Sortie longue dernier gros bloc",
+                "rpe": "RPE 3–4",
+                "difficulte": "4",
+                "consignes": "Dernière grosse stimulation. Descente propre, pas destructrice."
+            },
+            {
+                "code": "S5",
+                "type": "Sortie fatigue D+",
+                "jour": "",
+                "distance": "17–19 km",
+                "temps": "2h00",
+                "dp": "600–800 m",
+                "terrain": "Vallonné facile",
+                "contenu": "Sortie fatigue",
+                "rpe": "RPE 2–3",
+                "difficulte": "3",
+                "consignes": "Après cette semaine : ne plus chercher à progresser, seulement assimiler."
+            }
+        ],
+        "prioriteCoach": "Objectif source V6 : Dernier gros bloc. Moins de kilomètres, encore du D+. Après cette semaine : assimiler seulement.",
+        "sourceNotes": []
+    },
+    {
+        "id": 18,
+        "label": "S18 — Début affûtage",
+        "start": "2026-10-19",
+        "end": "2026-10-25",
+        "phase": 5,
+        "type": "affûtage",
+        "kmMin": 62,
+        "kmMax": 62,
+        "dpMin": 1800,
+        "dpMax": 1800,
+        "objectif": "Commencer à restituer. D+ encore présent, volume maîtrisé.",
+        "macroObjectif": "Début affûtage",
+        "datesSource": "19–25 oct.",
+        "seances": [
+            {
+                "code": "S1",
+                "type": "Rappel montée",
+                "jour": "",
+                "distance": "11–12 km",
+                "temps": "1h05–1h15",
+                "dp": "350–450 m",
+                "terrain": "Côte modérée",
+                "contenu": "5 × 4 min montée RPE 6",
+                "rpe": "RPE 6",
+                "difficulte": "3",
+                "consignes": "Rappel contrôlé, pas séance de développement."
+            },
+            {
+                "code": "S2",
+                "type": "Footing facile 1",
+                "jour": "",
+                "distance": "10–11 km",
+                "temps": "1h00",
+                "dp": "100–150 m",
+                "terrain": "Facile",
+                "contenu": "Footing facile",
+                "rpe": "RPE 3",
+                "difficulte": "1",
+                "consignes": "Laisser la fraîcheur revenir."
+            },
+            {
+                "code": "S3",
+                "type": "Renfo réduit + footing",
+                "jour": "",
+                "distance": "6–8 km",
+                "temps": "40–45 min + 20–25 min renfo",
+                "dp": "40–80 m",
+                "terrain": "Souple",
+                "contenu": "Une séance légère",
+                "rpe": "RPE 2",
+                "difficulte": "1",
+                "consignes": "À partir de S18 : plus de charges lourdes, activation légère seulement."
+            },
+            {
+                "code": "S4",
+                "type": "Sortie longue réduite",
+                "jour": "",
+                "distance": "23–25 km",
+                "temps": "3h00",
+                "dp": "900–1100 m",
+                "terrain": "Trail vallonné",
+                "contenu": "Sortie longue modérée",
+                "rpe": "RPE 3–4",
+                "difficulte": "3",
+                "consignes": "D+ encore présent, volume maîtrisé."
+            },
+            {
+                "code": "S5",
+                "type": "Footing facile 2",
+                "jour": "",
+                "distance": "9–10 km",
+                "temps": "50–60 min",
+                "dp": "150–250 m",
+                "terrain": "Vallonné léger",
+                "contenu": "Footing facile",
+                "rpe": "RPE 2–3",
+                "difficulte": "1",
+                "consignes": "Aucun travail de descente agressive."
+            }
+        ],
+        "prioriteCoach": "Objectif source V6 : Commencer à restituer. D+ encore présent, volume maîtrisé.",
+        "sourceNotes": []
+    },
+    {
+        "id": 19,
+        "label": "S19 — Fraîcheur + rappel intensité",
+        "start": "2026-10-26",
+        "end": "2026-11-01",
+        "phase": 5,
+        "type": "affûtage",
+        "kmMin": 50,
+        "kmMax": 50,
+        "dpMin": 1200,
+        "dpMax": 1200,
+        "objectif": "Fraîcheur + rappel intensité.",
+        "macroObjectif": "Fraîcheur + rappel intensité",
+        "datesSource": "26 oct.–1 nov.",
+        "seances": [
+            {
+                "code": "S1",
+                "type": "Facile + accélérations",
+                "jour": "",
+                "distance": "10–11 km",
+                "temps": "1h00",
+                "dp": "80–120 m",
+                "terrain": "Facile",
+                "contenu": "1h facile avec 6 × 20 s",
+                "rpe": "RPE 3, accélérations 6",
+                "difficulte": "2",
+                "consignes": "Accélérations relâchées. Pas de lactique."
+            },
+            {
+                "code": "S2",
+                "type": "Rappel montée court",
+                "jour": "",
+                "distance": "9–10 km",
+                "temps": "55–65 min",
+                "dp": "250–350 m",
+                "terrain": "Côte modérée",
+                "contenu": "4 × 3 min montée RPE 6",
+                "rpe": "RPE 6",
+                "difficulte": "2",
+                "consignes": "Rappel, pas fatigue."
+            },
+            {
+                "code": "S3",
+                "type": "Sortie longue courte",
+                "jour": "",
+                "distance": "18–20 km",
+                "temps": "2h15",
+                "dp": "550–650 m",
+                "terrain": "Vallonné facile",
+                "contenu": "Sortie longue 600 D+",
+                "rpe": "RPE 3",
+                "difficulte": "3",
+                "consignes": "Rester en contrôle. Pas de charge lourde mollets."
+            },
+            {
+                "code": "S4",
+                "type": "Footing récupération",
+                "jour": "",
+                "distance": "7–8 km",
+                "temps": "45–50 min",
+                "dp": "40–80 m",
+                "terrain": "Plat/souple",
+                "contenu": "Footing récupération",
+                "rpe": "RPE 2",
+                "difficulte": "1",
+                "consignes": "Objectif fraîcheur."
+            },
+            {
+                "code": "S5",
+                "type": "Mobilité + footing court",
+                "jour": "",
+                "distance": "5–7 km",
+                "temps": "35–40 min + mobilité",
+                "dp": "40–80 m",
+                "terrain": "Souple",
+                "contenu": "Footing très facile + mobilité",
+                "rpe": "RPE 1–2",
+                "difficulte": "1",
+                "consignes": "Plus de charge lourde. Sommeil prioritaire."
+            }
+        ],
+        "prioriteCoach": "Objectif source V6 : Fraîcheur + rappel intensité.",
+        "sourceNotes": []
+    },
+    {
+        "id": 20,
+        "label": "S20 — Affûtage",
+        "start": "2026-11-02",
+        "end": "2026-11-08",
+        "phase": 5,
+        "type": "affûtage",
+        "kmMin": 35,
+        "kmMax": 42,
+        "dpMin": 600,
+        "dpMax": 900,
+        "objectif": "Stocker de la fraîcheur.",
+        "macroObjectif": "Affûtage",
+        "datesSource": "2–8 nov.",
+        "seances": [
+            {
+                "code": "S1",
+                "type": "Footing facile",
+                "jour": "",
+                "distance": "7–8 km",
+                "temps": "45 min",
+                "dp": "40–80 m",
+                "terrain": "Facile",
+                "contenu": "45 min facile",
+                "rpe": "RPE 2–3",
+                "difficulte": "1",
+                "consignes": "Commencer à stocker de la fraîcheur."
+            },
+            {
+                "code": "S2",
+                "type": "Côtes dynamiques courtes",
+                "jour": "",
+                "distance": "7–9 km",
+                "temps": "50–55 min",
+                "dp": "180–250 m",
+                "terrain": "Côte courte",
+                "contenu": "6 × 1 min dynamique en côte, récupération complète",
+                "rpe": "RPE 6–7",
+                "difficulte": "2",
+                "consignes": "Rappel dynamique. Récupération complète, aucune dette."
+            },
+            {
+                "code": "S3",
+                "type": "Vallonné facile",
+                "jour": "",
+                "distance": "12–14 km",
+                "temps": "1h15",
+                "dp": "300–450 m",
+                "terrain": "Vallonné facile",
+                "contenu": "1h15 vallonné facile",
+                "rpe": "RPE 3",
+                "difficulte": "2",
+                "consignes": "Facile strict. Travail de sensations."
+            },
+            {
+                "code": "S4",
+                "type": "Footing court",
+                "jour": "",
+                "distance": "5–7 km",
+                "temps": "35–40 min",
+                "dp": "20–60 m",
+                "terrain": "Plat/souple",
+                "contenu": "Footing facile",
+                "rpe": "RPE 2",
+                "difficulte": "1",
+                "consignes": "Couper si lourdeur."
+            },
+            {
+                "code": "S5",
+                "type": "Mobilité / marche active",
+                "jour": "",
+                "distance": "0–4 km optionnels",
+                "temps": "20–40 min",
+                "dp": "0–50 m",
+                "terrain": "Plat",
+                "contenu": "Mobilité, sommeil, matériel. Trot optionnel très facile.",
+                "rpe": "RPE 1",
+                "difficulte": "1",
+                "consignes": "Pas de renfo lourd. Aucun risque inutile."
+            }
+        ],
+        "prioriteCoach": "Objectif source V6 : Stocker de la fraîcheur.",
+        "sourceNotes": []
+    },
+    {
+        "id": 21,
+        "label": "S21 — Course TransLantau",
+        "start": "2026-11-09",
+        "end": "2026-11-13",
+        "phase": 5,
+        "type": "race",
+        "kmMin": 15,
+        "kmMax": 25,
+        "dpMin": 0,
+        "dpMax": 0,
+        "objectif": "Course TransLantau",
+        "macroObjectif": "Course TransLantau",
+        "datesSource": "9–13 nov.",
+        "seances": [
+            {
+                "code": "S1",
+                "type": "Lundi activation",
+                "jour": "Lundi activation",
+                "distance": "6–7 km",
+                "temps": "40 min",
+                "dp": "30–60 m",
+                "terrain": "",
+                "contenu": "40 min facile + 5 × 20 s",
+                "rpe": "RPE 3, accélérations 6",
+                "difficulte": "1",
+                "consignes": "Juste activer. Pas de fatigue."
+            },
+            {
+                "code": "S2",
+                "type": "Mardi repos ou très facile",
+                "jour": "Mardi repos ou très facile",
+                "distance": "0–5 km",
+                "temps": "Repos ou 30 min",
+                "dp": "0–30 m",
+                "terrain": "",
+                "contenu": "Repos ou 30 min très facile",
+                "rpe": "RPE 1–2",
+                "difficulte": "1",
+                "consignes": "Choisir repos si doute."
+            },
+            {
+                "code": "S3",
+                "type": "Mercredi déverrouillage",
+                "jour": "Mercredi déverrouillage",
+                "distance": "4–5 km",
+                "temps": "25–30 min + mobilité",
+                "dp": "0–30 m",
+                "terrain": "",
+                "contenu": "Footing court + mobilité",
+                "rpe": "RPE 2",
+                "difficulte": "1",
+                "consignes": "Préparer mobilité, pas entraîner."
+            },
+            {
+                "code": "S4",
+                "type": "Jeudi repos",
+                "jour": "Jeudi repos",
+                "distance": "0 km",
+                "temps": "Repos",
+                "dp": "0 m",
+                "terrain": "",
+                "contenu": "Repos complet",
+                "rpe": "RPE 1",
+                "difficulte": "1",
+                "consignes": "Aucune séance de renfo cette semaine."
+            },
+            {
+                "code": "S5",
+                "type": "Vendredi — TransLantau",
+                "jour": "Vendredi — TransLantau",
+                "distance": "104 km",
+                "temps": "Chrono cible non fixé",
+                "dp": "4500 m",
+                "terrain": "",
+                "contenu": "Course objectif. Départ maîtrisé, montée en marche/course rentable, descente sans freinage excessif.",
+                "rpe": "RPE 3–4 départ, 4–5 montées, 6–7 fin possible",
+                "difficulte": "4",
+                "consignes": "Objectif : rendement stable, rester efficace après 70 km, réduire risque crampes mollets, finir fort sans explosion."
+            }
+        ],
+        "prioriteCoach": "Objectif source V6 : Course TransLantau",
+        "sourceNotes": [],
+        "dpLabel": "D+ faible avant course — course séparée : 4500 m D+",
+        "course": {
+            "name": "TransLantau",
+            "date": "2026-11-13",
+            "km": 104,
+            "dp": 4500,
+            "role": "Course objectif"
+        }
+    }
+];
 
-  const HERO_MANTRAS = ["Les jambes souffrent, la tête décide.","Chaque descente s'apprend.","Ce que tu endures aujourd'hui, tu le déposeras en haut.","La performance se construit dans l'obscurité.","Pas de course maîtrisée sans mauvaises journées.","Les mollets se préparent avant de se plaindre.","HK t'attend. Arrive solide.","Le trail ne ment pas."];
-  const QUOTES = ["Les jambes souffrent, la tête décide.","Chaque descente s'apprend.","Ce que tu endures aujourd'hui, tu le déposeras en haut.","La performance se construit dans l'obscurité.","Pas de course maîtrisée sans mauvaises journées.","Les mollets se préparent avant de se plaindre.","HK t'attend. Arrive solide.","Le trail ne ment pas.","La montagne ne se négocie pas.","Chaque mètre de D+ est un investissement.","Après 70 km, le mental ne compense pas une mauvaise préparation musculaire.","Frais au départ, solide après la nuit."];
+  const HERO_MANTRAS = ["RPE → terrain → durée → D+ → FC en garde-fou.", "Le facteur limitant principal n’est pas le cardio.", "Le facteur limitant est la résistance musculaire spécifique trail long.", "Descente travaillée en fatigue, sauf semaine de récupération.", "Renfo mollets/soléaires deux fois par semaine jusqu’à mi-octobre.", "Jamais deux séances cardio dures consécutives.", "Après sortie longue >3h30 : lendemain très facile ou repos.", "Ne jamais augmenter simultanément volume, D+, intensité et descente agressive."];
+  const QUOTES = ["RPE → terrain → durée → D+ → FC en garde-fou.", "Le facteur limitant principal n’est pas le cardio.", "Le facteur limitant est la résistance musculaire spécifique trail long.", "Descente travaillée en fatigue, sauf semaine de récupération.", "Renfo mollets/soléaires deux fois par semaine jusqu’à mi-octobre.", "Jamais deux séances cardio dures consécutives.", "Après sortie longue >3h30 : lendemain très facile ou repos.", "Ne jamais augmenter simultanément volume, D+, intensité et descente agressive.", "Les courses de préparation ne doivent pas casser le bloc TransLantau.", "La 6000D sert à calibrer le chrono cible et les ajustements finaux.", "Objectif : rendement stable après 70 km.", "Finir fort, pas seulement finir."];
   const JOURNAL_TYPES = ["EF","Trail","Côtes","Descentes","Tempo","PPG / renfo","Home trainer","Rando-course","Repos","Course","Autre"];
   const RADAR_AXES = ["Endurance longue","Montée / marche active","Descentes / quadriceps","Mollets / soléaires","Nutrition / hydratation","Fraîcheur mentale"];
 
@@ -393,10 +2169,10 @@
   }
 
   function nutritionAuto(active){
-    if (active.id < 6) return "À cadrer";
-    if (active.id <= 10) return "À tester en course / sortie longue";
-    if (active.id <= 17) return "En validation";
-    return "Validée ?";
+    if (active.id < 6) return "Tests sortie longue";
+    if (active.id === 6) return "Test 6000D";
+    if (active.id <= 17) return "Suivre consignes séances";
+    return "Aucune cible chiffrée V6";
   }
 
   function getWeekActuals(w){
@@ -481,7 +2257,7 @@
   }
 
   function renderNutritionSelect(active){
-    const opts = ["auto","À cadrer","À tester en course / sortie longue","En validation","Validée ?"];
+    const opts = ["auto","Tests sortie longue","Test 6000D","Suivre consignes séances","Aucune cible chiffrée V6"];
     const current = nutritionStatus === "auto" ? nutritionAuto(active) : nutritionStatus;
     $("#nutritionSelect").innerHTML = opts.map(o => `<option value="${o}" ${nutritionStatus===o?"selected":""}>Nutrition : ${o==="auto"?`Auto — ${nutritionAuto(active)}`:o}</option>`).join("");
     return current;
@@ -699,6 +2475,23 @@
     $$(".week-card").forEach(btn=>btn.addEventListener("click",()=>openDrawer(Number(btn.dataset.week))));
   }
 
+  function renderSessionCard(s){
+    const meta = [
+      s.distance ? `Distance : ${escapeHtml(s.distance)}` : "",
+      s.temps ? `Temps : ${escapeHtml(s.temps)}` : "",
+      s.dp ? `D+ : ${escapeHtml(s.dp)}` : "",
+      s.terrain ? `Terrain : ${escapeHtml(s.terrain)}` : "",
+      s.rpe ? `RPE : ${escapeHtml(s.rpe)}` : "",
+      s.difficulte ? `Difficulté : ${escapeHtml(s.difficulte)}` : ""
+    ].filter(Boolean).map(x=>`<span>${x}</span>`).join("");
+    return `<article class="session-card">
+      <div class="session-head"><div><div class="session-code">${escapeHtml(s.code)}</div><div class="session-type">${escapeHtml(s.type || s.jour)}</div></div></div>
+      <div class="session-meta">${meta}</div>
+      <div class="session-content">${escapeHtml(s.contenu)}</div>
+      ${s.consignes ? `<div class="session-consigne">${escapeHtml(s.consignes)}</div>` : ""}
+    </article>`;
+  }
+
   function openDrawer(id){
     selectedWeekId = id;
     const w = PLAN.find(x=>x.id===id); const a = getWeekActuals(w);
@@ -706,7 +2499,7 @@
     drawer.innerHTML = `<div class="drawer-head"><div><h2>S${w.id} — ${w.objectif}</h2><p class="note">${formatDateRange(w.start,w.end)} · ${phaseOf(w).label} · <span class="badge ${typeClass(w.type)}">${w.type}</span></p></div><button class="close" id="closeDrawer" aria-label="Fermer">×</button></div>
       ${w.course?`<div class="coach-note">Course : ${w.course.name} · ${w.course.km} km · ${w.course.dp} D+ · ${w.course.role}</div>`:""}
       <div class="coach-note">${w.prioriteCoach}</div>
-      <h3>Séances prévues</h3><ul class="seance-list">${w.seances.map(s=>`<li>${s}</li>`).join("")}</ul>
+      <h3>Séances prévues — détail V6</h3><div class="session-cards">${w.seances.map(renderSessionCard).join("")}</div>${w.sourceNotes?.length ? `<div class="source-notes">${w.sourceNotes.map(n=>`<div class="coach-note">${escapeHtml(n)}</div>`).join("")}</div>` : ""}
       <form id="drawerForm" style="margin-top:14px"><div class="form-grid">
         <div class="field"><label for="dKm">Km réel</label><input id="dKm" type="number" min="0" step="0.1" value="${a.km}"></div>
         <div class="field"><label for="dDp">D+ réel</label><input id="dDp" type="number" min="0" step="1" value="${a.dp}"></div>
