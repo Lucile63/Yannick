@@ -197,7 +197,7 @@
     <section class="hero" id="top">
       <div class="hero-main">
         <div class="eyebrow">Objectif A final · 13 novembre 2026 · Plan V7</div>
-        <h1>TRANSLANTAU100<br>YANNICK</h1>
+        <h1>Translantau100</h1>
         <div class="subtitle">104 km · 4500 D+ · Plan performance</div>
         <div class="countdown-grid" aria-label="Compte à rebours TransLantau100">
           <div class="count-box"><div id="cdDays" class="count-value">--</div><div class="count-label">jours</div></div>
@@ -205,7 +205,6 @@
           <div class="count-box"><div id="cdMinutes" class="count-value">--</div><div class="count-label">min</div></div>
           <div class="count-box"><div id="cdSeconds" class="count-value">--</div><div class="count-label">sec</div></div>
         </div>
-        <div id="heroMantra" class="mantra-hero">Le 104 ne pardonne rien. Prépare propre.</div>
       </div>
       <aside class="hero-side">
         <div class="section-title">ÉCHÉANCES</div>
@@ -213,11 +212,6 @@
           <div id="sixdCounter" class="mini-race"><div><div class="name">6000D</div><div class="muted">42 km · 2100 D+ · S6 · Course test</div></div><div><div id="sixdDays" class="days">--</div><div class="muted">jours</div></div></div>
           <div id="luzitrailCounter" class="mini-race"><div><div class="name">Luzi'trail</div><div class="muted">16 km · 410 D+ · S11</div></div><div><div id="luzitrailDays" class="days">--</div><div class="muted">jours</div></div></div>
           <div id="dolmensCounter" class="mini-race"><div><div class="name">Trail des Dolmens</div><div class="muted">15 km · 370 D+ · S12</div></div><div><div id="dolmensDays" class="days">--</div><div class="muted">jours</div></div></div>
-        </div>
-        <div class="card" style="box-shadow:none;min-height:auto">
-          <div class="kpi-label">Semaine active</div>
-          <div id="heroActiveWeek" class="kpi-value">--</div>
-          <div id="heroActivePhase" class="kpi-detail">--</div>
         </div>
         <div class="hero-note">
           V7 · 7 créneaux maximum, jamais utilisés pour empiler. Course généralement limitée à 5 sorties/semaine. Les ajouts servent au renfo séparé, à l’activation et à la récupération active. Volume et D+ hebdomadaires conservés.
@@ -1447,19 +1441,19 @@
 
   function init(){
     activeWeekIndex = detectActiveWeek();
-    initMantras();
     initCountdowns();
     bindGlobalEvents();
     renderAll();
     setInterval(updateCountdowns, 1000);
-    setInterval(rotateMantra, 30000);
   }
 
   function initMantras(){
-    byId('heroMantra').textContent = MANTRAS[mantraIndex];
+    const node = byId('heroMantra');
+    if(node) node.textContent = MANTRAS[mantraIndex];
   }
   function rotateMantra(){
     const node = byId('heroMantra');
+    if(!node) return;
     node.classList.add('fade');
     setTimeout(() => {
       mantraIndex = (mantraIndex + 1) % MANTRAS.length;
@@ -1510,7 +1504,6 @@
 
   function renderAll(){
     activeWeekIndex = detectActiveWeek();
-    renderHeroContext();
     renderCharts();
     renderTimeline();
     renderBlocks();
@@ -1518,10 +1511,13 @@
   }
 
   function renderHeroContext(){
+    const weekNode = byId('heroActiveWeek');
+    const phaseNode = byId('heroActivePhase');
+    if(!weekNode || !phaseNode) return;
     const w = PLAN[activeWeekIndex];
     const p = getPhaseForWeek(activeWeekIndex);
-    byId('heroActiveWeek').textContent = `S${w.i}`;
-    byId('heroActivePhase').textContent = `${w.label} · ${p.label} — ${p.name}`;
+    weekNode.textContent = `S${w.i}`;
+    phaseNode.textContent = `${w.label} · ${p.label} — ${p.name}`;
   }
 
   function renderSideProgress(){
@@ -1955,7 +1951,11 @@
     byId('drawerTitle').textContent = `S${w.i} — ${w.label}`;
     byId('drawerMeta').innerHTML = `${w.dates} · <span class="pill ${slugType(w.type)}">${w.type}</span> · ${weekRangeText(w.kmMin,w.kmMax,' km')} · ${weekRangeText(w.dpMin,w.dpMax,' m D+')}`;
     const doneMap = sessionDoneMap(i);
-    byId('drawerSessions').innerHTML = w.seances.map((s, idx) => renderSessionItem(s, idx, doneMap)).join('');
+    byId('drawerSessions').innerHTML = w.seances
+      .map((s, idx) => ({s, idx}))
+      .filter(({s}) => !['objectif','cadre semaine'].includes(String(s[0] || '').trim().toLowerCase()))
+      .map(({s, idx}) => renderSessionItem(s, idx, doneMap))
+      .join('');
     const auto = d.autoPrefill === true;
     ['drawerKm','drawerDp','drawerSessionsDone'].forEach(id => { byId(id).dataset.userEdited = 'false'; });
     byId('drawerKm').value = d.kmReel ?? '';
